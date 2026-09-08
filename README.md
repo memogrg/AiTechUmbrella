@@ -1,10 +1,9 @@
 # AI Tech Umbrella — Sitio corporativo
 
-Sitio oficial de **AI Tech Umbrella LLC**. Réplica en HTML/CSS/JS estándar del diseño
-creado en Claude Design (`AI Tech Umbrella - Sitio.dc.html`), lista para publicarse
-en cualquier hosting estático.
+Sitio oficial de **AI Tech Umbrella LLC** → **https://aitechumbrella.com**
 
-**Sin dependencias, sin build, sin framework.** Se abre `index.html` y funciona.
+Réplica en HTML/CSS/JS estándar del diseño creado en Claude Design
+(`AI Tech Umbrella - Sitio.dc.html`). **Sin dependencias, sin build, sin framework.**
 
 ---
 
@@ -13,6 +12,8 @@ en cualquier hosting estático.
 ```
 .
 ├── index.html                  # Página única con las seis vistas
+├── vercel.json                 # Cabeceras de seguridad y caché
+├── robots.txt · sitemap.xml    # Indexación
 ├── assets/
 │   ├── css/styles.css          # Tokens, componentes y animaciones
 │   ├── js/main.js              # Router por hash, hero interactivo, ticker, formulario
@@ -27,8 +28,8 @@ en cualquier hosting estático.
 
 ## Vistas y rutas
 
-El sitio es una sola página con navegación por *hash*, de modo que cada sección
-tiene URL propia, compartible y con botón «atrás» funcional.
+Una sola página con navegación por *hash*: cada sección tiene URL propia,
+compartible y con botón «atrás» funcional.
 
 | Ruta                  | Sección          |
 | --------------------- | ---------------- |
@@ -42,36 +43,34 @@ tiene URL propia, compartible y con botón «atrás» funcional.
 ## Ejecución local
 
 ```bash
-# Opción 1 — abrir el archivo directamente
-open index.html
-
-# Opción 2 — servidor local (recomendado)
-python3 -m http.server 8080
-# → http://localhost:8080
+python3 -m http.server 8080     # → http://localhost:8080
 ```
 
-## Publicación
+## Despliegue
 
-El sitio es estático; cualquiera de estas opciones funciona sin configuración:
+**Vercel**, conectado a este repositorio. Cada `push` a `main` publica en producción;
+cada rama o PR genera una URL de vista previa. No hay comando de build ni directorio
+de salida: Vercel sirve los archivos tal cual.
 
-- **GitHub Pages** — Settings → Pages → Deploy from a branch → `main` / `root`.
-- **Vercel / Netlify** — importar el repositorio; sin comando de build ni directorio de salida.
-- **Hosting propio** — subir el contenido del repositorio a la raíz del dominio.
+- Equipo Vercel: `AI Tech Umbrella's projects`
+- Dominios: `aitechumbrella.com` (apex) y `www.aitechumbrella.com` → redirige al apex
+- DNS del dominio: administrado en **Squarespace** (`nsc1–nsc4.squarespacedns.com`)
 
-Para dominio propio, agregar un archivo `CNAME` en la raíz con `aitechumbrella.com`.
+Los subdominios de producto (`carteraplus`, `auracare`, `financialglowup`) viven en
+proyectos Vercel independientes y no se ven afectados por este repositorio.
 
 ## Sistema de diseño
 
-| Elemento            | Valor                                                        |
-| ------------------- | ------------------------------------------------------------ |
-| Tinta               | `#071421`                                                    |
-| Azul de marca       | `#2864E5`                                                    |
-| Cian de marca       | `#27C7D9`                                                    |
-| Violeta de apoyo    | `#7467E8`                                                    |
-| Texto de cuerpo     | `#4A5C6B`                                                    |
-| Tipografía titulares| Sora (600 / 700)                                             |
-| Tipografía cuerpo   | Plus Jakarta Sans (400 / 500 / 600)                          |
-| Lenguaje visual     | Neumorfismo claro + superficies de vidrio, fondo animado      |
+| Elemento             | Valor                                                   |
+| -------------------- | ------------------------------------------------------- |
+| Tinta                | `#071421`                                               |
+| Azul de marca        | `#2864E5`                                               |
+| Cian de marca        | `#27C7D9`                                               |
+| Violeta de apoyo     | `#7467E8`                                               |
+| Texto de cuerpo      | `#4A5C6B`                                               |
+| Tipografía titulares | Sora (600 / 700)                                        |
+| Tipografía cuerpo    | Plus Jakarta Sans (400 / 500 / 600)                     |
+| Lenguaje visual      | Neumorfismo claro + superficies de vidrio, fondo animado |
 
 Todos los valores viven como *custom properties* en `:root` dentro de `assets/css/styles.css`.
 
