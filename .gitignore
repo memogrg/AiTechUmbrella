@@ -2,22 +2,25 @@
 .DS_Store
 .AppleDouble
 .LSOverride
+Icon?
 
-# Entornos y dependencias
-node_modules/
-venv/
-.venv/
-__pycache__/
-*.pyc
-.env
-.env.*
-
-# Builds
-dist/
-build/
-*.log
+# Windows
+Thumbs.db
+Desktop.ini
 
 # Editores
 .vscode/
 .idea/
 *.swp
+*~
+
+# Dependencias y builds (por si más adelante se añade tooling)
+node_modules/
+dist/
+build/
+.env
+.env.*
+
+# Temporales de transferencia
+_to_delete/
+_transfer/

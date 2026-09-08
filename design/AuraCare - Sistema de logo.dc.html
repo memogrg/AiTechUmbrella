@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+  body { margin: 0; background: #FFFFFF; color: #071421; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #0E7C8A; text-decoration: none; }
+  a:hover { color: #2864E5; }
+  @keyframes a-petal { 0%, 100% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(14deg) scale(1.05); } }
+  @keyframes a-breathe { 0%, 100% { transform: scale(1); opacity: .9; } 50% { transform: scale(1.08); opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; background: radial-gradient(120% 90% at 50% -10%, #F1F8F9 0%, #FFFFFF 58%); padding: clamp(44px, 6vw, 92px) 24px clamp(64px, 8vw, 112px);">
+  <div style="max-width: 1180px; margin: 0 auto;">
+
+    <p style="display: flex; align-items: center; gap: 12px; margin: 0 0 22px; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #4F6272;">
+      <span style="width: 26px; height: 1px; background: #4FD1C5;"></span>AuraCare · Sistema de marca aprobado
+    </p>
+    <h1 style="font-family: 'Sora', sans-serif; font-size: clamp(2rem, 3.6vw, 2.9rem); line-height: 1.08; letter-spacing: -0.03em; font-weight: 700; margin: 0; max-width: 26ch; text-wrap: balance;">Pétalos de atención. El sistema completo.</h1>
+    <p style="margin: 22px 0 0; max-width: 66ch; font-size: clamp(1rem, 1.15vw, 1.12rem); line-height: 1.65; color: #4A5C6B;">Cuatro pétalos rodean un núcleo: el paciente al centro y el cuidado alrededor. Un solo módulo geométrico rotado 90° cuatro veces, construido sobre una retícula de 40 × 40. El movimiento es un giro de 14° que respira; la marca nunca depende de él.</p>
+
+    <div style="margin-top: clamp(36px, 5vw, 64px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+
+      <article style="{{ card }}">
+        <p style="{{ label }}">Firma horizontal · principal</p>
+        <div style="{{ stage }}">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <svg width="60" height="60" viewBox="0 0 40 40" aria-hidden="true">
+              <defs><linearGradient id="s1" x1="6" y1="6" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#0E7C8A"></stop><stop offset="1" stop-color="#4FD1C5"></stop></linearGradient></defs>
+              <g fill="url(#s1)" style="animation: a-petal 6s ease-in-out infinite; transform-origin: 20px 20px;">
+                <path d="M20 6a10 10 0 0 1 10 10A10 10 0 0 1 20 6Z"></path><path d="M34 20a10 10 0 0 1-10 10 10 10 0 0 1 10-10Z"></path><path d="M20 34a10 10 0 0 1-10-10 10 10 0 0 1 10 10Z"></path><path d="M6 20a10 10 0 0 1 10-10A10 10 0 0 1 6 20Z"></path>
+              </g>
+              <circle cx="20" cy="20" r="3.2" fill="#071421"></circle>
+            </svg>
+            <span style="display: flex; flex-direction: column; line-height: 1;">
+              <span style="font-family: 'Sora', sans-serif; font-size: 30px; font-weight: 600; letter-spacing: -0.025em;">AuraCare</span>
+              <span style="margin-top: 7px; font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #4F6272;">by AI Tech Umbrella</span>
+            </span>
+          </div>
+        </div>
+        <p style="{{ note }}">Uso preferente: encabezados, presentaciones, documentos. El descriptor de endoso se mantiene mientras la arquitectura masterbrand esté vigente.</p>
+      </article>
+
+      <article style="{{ card }}">
+        <p style="{{ label }}">Firma vertical</p>
+        <div style="{{ stage }}">
+          <div style="display: grid; justify-items: center; gap: 14px;">
+            <svg width="56" height="56" viewBox="0 0 40 40" aria-hidden="true">
+              <defs><linearGradient id="s2" x1="6" y1="6" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#0E7C8A"></stop><stop offset="1" stop-color="#4FD1C5"></stop></linearGradient></defs>
+              <g fill="url(#s2)"><path d="M20 6a10 10 0 0 1 10 10A10 10 0 0 1 20 6Z"></path><path d="M34 20a10 10 0 0 1-10 10 10 10 0 0 1 10-10Z"></path><path d="M20 34a10 10 0 0 1-10-10 10 10 0 0 1 10 10Z"></path><path d="M6 20a10 10 0 0 1 10-10A10 10 0 0 1 6 20Z"></path></g>
+              <circle cx="20" cy="20" r="3.2" fill="#071421"></circle>
+            </svg>
+            <span style="font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.025em;">AuraCare</span>
+          </div>
+        </div>
+        <p style="{{ note }}">Formatos cuadrados, redes sociales y composiciones centradas.</p>
+      </article>
+
+      <article style="{{ card }}">
+        <p style="{{ label }}">Monocromática</p>
+        <div style="{{ stage }}; gap: 28px; display: flex; align-items: center; justify-content: center;">
+          <svg width="52" height="52" viewBox="0 0 40 40" aria-hidden="true">
+            <g fill="#071421"><path d="M20 6a10 10 0 0 1 10 10A10 10 0 0 1 20 6Z"></path><path d="M34 20a10 10 0 0 1-10 10 10 10 0 0 1 10-10Z"></path><path d="M20 34a10 10 0 0 1-10-10 10 10 0 0 1 10 10Z"></path><path d="M6 20a10 10 0 0 1 10-10A10 10 0 0 1 6 20Z"></path></g>
+            <circle cx="20" cy="20" r="3.2" fill="#FFFFFF"></circle>
+          </svg>
+          <div style="background: #071421; border-radius: 18px; padding: 14px;">
+            <svg width="52" height="52" viewBox="0 0 40 40" aria-hidden="true">
+              <g fill="#FFFFFF"><path d="M20 6a10 10 0 0 1 10 10A10 10 0 0 1 20 6Z"></path><path d="M34 20a10 10 0 0 1-10 10 10 10 0 0 1 10-10Z"></path><path d="M20 34a10 10 0 0 1-10-10 10 10 0 0 1 10 10Z"></path><path d="M6 20a10 10 0 0 1 10-10A10 10 0 0 1 6 20Z"></path></g>
+              <circle cx="20" cy="20" r="3.2" fill="#071421"></circle>
+            </svg>
+          </div>
+        </div>
+        <p style="{{ note }}">Obligatoria en grabados, sellos, bordados y reproducciones de una sola tinta. Conserva proporción y núcleo calado.</p>
+      </article>
+
+      <article style="{{ card }}">
+        <p style="{{ label }}">Símbolo · favicon y app</p>
+        <div style="{{ stage }}; display: flex; align-items: center; justify-content: center; gap: 22px;">
+          <svg width="64" height="64" viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="s4" x1="6" y1="6" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#0E7C8A"></stop><stop offset="1" stop-color="#4FD1C5"></stop></linearGradient></defs><g fill="url(#s4)"><path d="M20 6a10 10 0 0 1 10 10A10 10 0 0 1 20 6Z"></path><path d="M34 20a10 10 0 0 1-10 10 10 10 0 0 1 10-10Z"></path><path d="M20 34a10 10 0 0 1-10-10 10 10 0 0 1 10 10Z"></path><path d="M6 20a10 10 0 0 1 10-10A10 10 0 0 1 6 20Z"></path></g><circle cx="20" cy="20" r="3.2" fill="#071421"></circle></svg>
+          <svg width="32" height="32" viewBox="0 0 40 40" aria-hidden="true"><g fill="#0E7C8A"><path d="M20 6a10 10 0 0 1 10 10A10 10 0 0 1 20 6Z"></path><path d="M34 20a10 10 0 0 1-10 10 10 10 0 0 1 10-10Z"></path><path d="M20 34a10 10 0 0 1-10-10 10 10 0 0 1 10 10Z"></path><path d="M6 20a10 10 0 0 1 10-10A10 10 0 0 1 6 20Z"></path></g><circle cx="20" cy="20" r="3.4" fill="#FFFFFF"></circle></svg>
+          <svg width="16" height="16" viewBox="0 0 40 40" aria-hidden="true"><g fill="#0E7C8A"><path d="M20 5a11 11 0 0 1 11 11A11 11 0 0 1 20 5Z"></path><path d="M35 20a11 11 0 0 1-11 11 11 11 0 0 1 11-11Z"></path><path d="M20 35a11 11 0 0 1-11-11 11 11 0 0 1 11 11Z"></path><path d="M5 20a11 11 0 0 1 11-11A11 11 0 0 1 5 20Z"></path></g></svg>
+        </div>
+        <p style="{{ note }}">64 / 32 / 16 px. A 16 px el núcleo se cierra y los pétalos engordan un punto para no perder la figura.</p>
+      </article>
+
+      <article style="{{ card }}">
+        <p style="{{ label }}">Sobre fondo oscuro</p>
+        <div style="height: 150px; border-radius: 18px; background: #071421; display: grid; place-items: center;">
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <svg width="50" height="50" viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="s5" x1="6" y1="6" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#4FD1C5"></stop><stop offset="1" stop-color="#0E7C8A"></stop></linearGradient></defs><g fill="url(#s5)"><path d="M20 6a10 10 0 0 1 10 10A10 10 0 0 1 20 6Z"></path><path d="M34 20a10 10 0 0 1-10 10 10 10 0 0 1 10-10Z"></path><path d="M20 34a10 10 0 0 1-10-10 10 10 0 0 1 10 10Z"></path><path d="M6 20a10 10 0 0 1 10-10A10 10 0 0 1 6 20Z"></path></g><circle cx="20" cy="20" r="3.2" fill="#071421"></circle></svg>
+            <span style="font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 600; letter-spacing: -0.025em; color: #F3F7FB;">AuraCare</span>
+          </div>
+        </div>
+        <p style="{{ note }}">El degradado se invierte para conservar el brillo del mint contra Night #071421.</p>
+      </article>
+
+      <article style="{{ card }}">
+        <p style="{{ label }}">Color y construcción</p>
+        <div style="display: grid; gap: 12px; margin-top: 4px;">
+          <div style="{{ swatch }}"><span style="width: 34px; height: 34px; border-radius: 10px; background: #0E7C8A;"></span><span><strong style="font-weight: 600;">Aura Teal</strong> · #0E7C8A — color primario, texto sobre blanco (4.9:1).</span></div>
+          <div style="{{ swatch }}"><span style="width: 34px; height: 34px; border-radius: 10px; background: #4FD1C5;"></span><span><strong style="font-weight: 600;">Care Mint</strong> · #4FD1C5 — extremo del degradado y acento; nunca para texto pequeño.</span></div>
+          <div style="{{ swatch }}"><span style="width: 34px; height: 34px; border-radius: 10px; background: #071421;"></span><span><strong style="font-weight: 600;">Night</strong> · #071421 — heredado de Umbrella: núcleo, tipografía y fondos.</span></div>
+        </div>
+        <p style="{{ note }}">Degradado autorizado #0E7C8A → #4FD1C5, corto y controlado, solo en el símbolo. Wordmark siempre en Night o Polar White. Área de respeto: el ancho de un pétalo (10 unidades de la retícula) alrededor de la firma.</p>
+      </article>
+
+    </div>
+
+    <div style="margin-top: clamp(40px, 5vw, 68px); padding: clamp(24px, 3.2vw, 40px); border-radius: 26px; background: rgba(255,255,255,0.62); backdrop-filter: blur(18px); box-shadow: 0 18px 48px rgba(7,20,33,0.08), inset 0 0 0 1px rgba(255,255,255,0.78);">
+      <p style="{{ label }}">Reglas de uso</p>
+      <ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px 32px; font-size: 0.97rem; line-height: 1.6; color: #4A5C6B;">
+        <li style="display: flex; gap: 10px;"><span style="color: #0E7C8A;" aria-hidden="true">→</span>No rotar los pétalos fuera de la animación aprobada (14°).</li>
+        <li style="display: flex; gap: 10px;"><span style="color: #0E7C8A;" aria-hidden="true">→</span>No separar el núcleo del conjunto ni cambiar su tamaño relativo.</li>
+        <li style="display: flex; gap: 10px;"><span style="color: #0E7C8A;" aria-hidden="true">→</span>No aplicar sombras, biseles ni brillos al símbolo.</li>
+        <li style="display: flex; gap: 10px;"><span style="color: #0E7C8A;" aria-hidden="true">→</span>No usar el mint como color de texto en cuerpos ni etiquetas.</li>
+        <li style="display: grid; grid-template-columns: auto 1fr; gap: 10px;"><span style="color: #0E7C8A;" aria-hidden="true">→</span><span>El movimiento se desactiva con <code style="font-family: ui-monospace, monospace; font-size: 0.9em;">prefers-reduced-motion</code>.</span></li>
+        <li style="display: flex; gap: 10px;"><span style="color: #0E7C8A;" aria-hidden="true">→</span>La marca debe funcionar en una tinta antes de aplicar el degradado.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      card: "background: #FFFFFF; border-radius: 24px; padding: 28px; box-shadow: 10px 10px 30px rgba(7,20,33,0.07), -8px -8px 24px rgba(255,255,255,0.9), inset 0 0 0 1px rgba(7,20,33,0.05);",
+      label: "margin: 0 0 18px; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #4F6272;",
+      stage: "height: 150px; display: grid; place-items: center; border-radius: 18px; background: rgba(14,124,138,0.04);",
+      note: "margin: 18px 0 0; font-size: 0.93rem; line-height: 1.6; color: #4A5C6B;",
+      swatch: "display: flex; align-items: center; gap: 14px; font-size: 0.93rem; line-height: 1.5; color: #4A5C6B;"
+    };
+  }
+}
+</script>
+</body>
+</html>

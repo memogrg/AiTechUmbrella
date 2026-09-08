@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #FFFFFF; color: #071421; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #071421; text-decoration: none; }
+  a:hover { color: #2864E5; }
+  @keyframes u-draw { 0% { stroke-dashoffset: 900; } 40%, 100% { stroke-dashoffset: 0; } }
+  @keyframes u-pop { 0%, 10% { opacity: 0; transform: scale(.4); } 28%, 92% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(.4); } }
+  @keyframes u-breathe { 0%, 100% { transform: scale(1); opacity: .85; } 50% { transform: scale(1.08); opacity: 1; } }
+  @keyframes u-orbit { to { transform: rotate(360deg); } }
+  @keyframes u-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+  @keyframes u-sheen { 0% { transform: translateX(-120%); } 100% { transform: translateX(220%); } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</helmet>
+
+<div style="background: #FFFFFF; overflow-x: hidden;">
+
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.72); backdrop-filter: blur(20px) saturate(1.4); border-bottom: 1px solid rgba(7,20,33,0.07);">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 14px 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px;">
+      <a href="#top" style="display: flex; align-items: center; gap: 13px;">
+        <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <defs><linearGradient id="hMark" x1="5" y1="8" x2="35" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#2864E5"></stop><stop offset="1" stop-color="#27C7D9"></stop></linearGradient></defs>
+          <path d="M5 25A15 15 0 0 1 35 25" stroke="url(#hMark)" stroke-width="3" stroke-linecap="round"></path>
+          <path d="M7.5 21 20 31M20 11.5 20 31M32.5 21 20 31" stroke="#071421" stroke-width="1.4" opacity=".3"></path>
+          <circle cx="20" cy="31" r="3.4" fill="url(#hMark)"></circle>
+          <circle cx="20" cy="9.4" r="2" fill="#27C7D9"></circle>
+        </svg>
+        <span style="display: flex; flex-direction: column; line-height: 1;">
+          <span style="font-size: 9.5px; font-weight: 600; letter-spacing: 0.22em; color: #8296A6;">AI TECH</span>
+          <span style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin-top: 3px;">Umbrella</span>
+        </span>
+      </a>
+      <nav aria-label="Navegación principal" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; margin-left: auto;">
+        <a href="#soluciones" style="font-size: 14.5px; font-weight: 500; color: #4A5C6B;" style-hover="color: #071421;">Soluciones</a>
+        <a href="#servicios" style="font-size: 14.5px; font-weight: 500; color: #4A5C6B;" style-hover="color: #071421;">Servicios</a>
+        <a href="#agentic" style="font-size: 14.5px; font-weight: 500; color: #4A5C6B;" style-hover="color: #071421;">Agentic AI</a>
+        <a href="#como-trabajamos" style="font-size: 14.5px; font-weight: 500; color: #4A5C6B;" style-hover="color: #071421;">Cómo trabajamos</a>
+        <a href="#compania" style="font-size: 14.5px; font-weight: 500; color: #4A5C6B;" style-hover="color: #071421;">Compañía</a>
+        <a href="#contacto" style="{{ ctaSmallStyle }}" style-hover="transform: translateY(-1px); filter: brightness(1.06);">Agendar una conversación</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section style="position: relative; max-width: 1280px; margin: 0 auto; padding: clamp(64px, 8vw, 128px) 28px clamp(56px, 7vw, 104px); display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: clamp(40px, 5vw, 80px); align-items: center;">
+      <div>
+        <p data-reveal="1" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; margin: 0 0 26px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C6F80;">
+          <span style="width: 26px; height: 1px; background: #27C7D9;"></span>
+          <span>Estrategia</span><span aria-hidden="true">·</span><span>Agentic AI</span><span aria-hidden="true">·</span><span>Datos</span><span aria-hidden="true">·</span><span>Transformación digital</span>
+        </p>
+        <h1 data-reveal="2" style="font-family: 'Sora', sans-serif; font-size: clamp(2.5rem, 5vw, 4.15rem); line-height: 1.04; letter-spacing: -0.035em; font-weight: 700; margin: 0; text-wrap: balance;">Transformamos oportunidades en soluciones inteligentes.</h1>
+        <p data-reveal="3" style="margin: 30px 0 0; max-width: 60ch; font-size: clamp(1.05rem, 1.25vw, 1.25rem); line-height: 1.6; color: #4A5C6B;">Entendemos su empresa, identificamos dónde puede generarse mayor impacto y conectamos estrategia, automatización, inteligencia artificial, datos y desarrollo digital para convertir oportunidades en capacidades medibles y escalables.</p>
+        <div data-reveal="4" style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px;">
+          <a href="#contacto" style="{{ ctaStyle }}" style-hover="transform: translateY(-2px); filter: brightness(1.06);">Agendar una conversación</a>
+          <a href="#soluciones" style="{{ glassBtnStyle }}" style-hover="transform: translateY(-2px); background: rgba(255,255,255,0.9);">Explorar soluciones</a>
+        </div>
+        <div data-reveal="5" style="display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 40px; font-size: 13px; color: #5C6F80;">
+          <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; border-radius: 999px; background: #27C7D9;"></span>Operación en San José, Costa Rica</span>
+          <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; border-radius: 999px; background: #2864E5;"></span>AI Tech Umbrella LLC · Florida, EE. UU.</span>
+          <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; border-radius: 999px; background: #7467E8;"></span>Mercado: América Latina</span>
+        </div>
+      </div>
+
+      <div style="position: relative;">
+        <div style="position: absolute; inset: 6% 8%; border-radius: 50%; background: radial-gradient(circle, rgba(40,100,229,0.14) 0%, rgba(39,199,217,0.08) 45%, rgba(255,255,255,0) 72%); filter: blur(6px);"></div>
+        <svg viewBox="0 0 620 440" role="img" aria-label="Capacidades independientes que se conectan y convergen en el objetivo de la empresa." style="position: relative; width: 100%; height: auto; display: block;">
+          <defs>
+            <linearGradient id="hArc" x1="70" y1="260" x2="550" y2="260" gradientUnits="userSpaceOnUse"><stop stop-color="#2864E5"></stop><stop offset="1" stop-color="#27C7D9"></stop></linearGradient>
+          </defs>
+          <path d="M70 262A240 132 0 0 1 550 262" fill="none" stroke="url(#hArc)" stroke-width="3" stroke-linecap="round" stroke-dasharray="900" style="animation: u-draw 7s cubic-bezier(.22,1,.36,1) infinite;"></path>
+          <path d="M118 268A192 106 0 0 1 502 268" fill="none" stroke="rgba(7,20,33,0.14)" stroke-width="1" stroke-dasharray="3 9"></path>
+          <g stroke="rgba(7,20,33,0.2)" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="900">
+            <path d="M76 232 310 342" style="animation: u-draw 7s cubic-bezier(.22,1,.36,1) infinite .1s;"></path>
+            <path d="M124 178 310 342" style="animation: u-draw 7s cubic-bezier(.22,1,.36,1) infinite .2s;"></path>
+            <path d="M206 140 310 342" style="animation: u-draw 7s cubic-bezier(.22,1,.36,1) infinite .3s;"></path>
+            <path d="M310 130 310 342" style="animation: u-draw 7s cubic-bezier(.22,1,.36,1) infinite .4s;"></path>
+            <path d="M414 140 310 342" style="animation: u-draw 7s cubic-bezier(.22,1,.36,1) infinite .5s;"></path>
+            <path d="M496 178 310 342" style="animation: u-draw 7s cubic-bezier(.22,1,.36,1) infinite .6s;"></path>
+            <path d="M544 232 310 342" style="animation: u-draw 7s cubic-bezier(.22,1,.36,1) infinite .7s;"></path>
+          </g>
+          <g fill="#FFFFFF" stroke="url(#hArc)" stroke-width="2.4">
+            <circle cx="76" cy="232" r="6" style="animation: u-pop 7s ease-in-out infinite .7s; transform-origin: 76px 232px;"></circle>
+            <circle cx="124" cy="178" r="6" style="animation: u-pop 7s ease-in-out infinite .82s; transform-origin: 124px 178px;"></circle>
+            <circle cx="206" cy="140" r="6" style="animation: u-pop 7s ease-in-out infinite .94s; transform-origin: 206px 140px;"></circle>
+            <circle cx="310" cy="130" r="7.5" style="animation: u-pop 7s ease-in-out infinite 1.06s; transform-origin: 310px 130px;"></circle>
+            <circle cx="414" cy="140" r="6" style="animation: u-pop 7s ease-in-out infinite 1.18s; transform-origin: 414px 140px;"></circle>
+            <circle cx="496" cy="178" r="6" style="animation: u-pop 7s ease-in-out infinite 1.3s; transform-origin: 496px 178px;"></circle>
+            <circle cx="544" cy="232" r="6" style="animation: u-pop 7s ease-in-out infinite 1.42s; transform-origin: 544px 232px;"></circle>
+          </g>
+          <g style="animation: u-orbit 22s linear infinite; transform-origin: 310px 342px;">
+            <circle cx="310" cy="286" r="4" fill="#7467E8" opacity=".7"></circle>
+            <circle cx="310" cy="398" r="3" fill="#27C7D9" opacity=".7"></circle>
+          </g>
+          <circle cx="310" cy="342" r="30" fill="none" stroke="rgba(40,100,229,0.28)" stroke-width="1" style="animation: u-breathe 5s ease-in-out infinite; transform-origin: 310px 342px;"></circle>
+          <circle cx="310" cy="342" r="12" fill="url(#hArc)"></circle>
+          <text x="310" y="410" text-anchor="middle" fill="#8296A6" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" letter-spacing="2.6">EL OBJETIVO DE SU EMPRESA</text>
+        </svg>
+      </div>
+    </section>
+
+    <section style="background: linear-gradient(180deg, #FFFFFF 0%, #F5F8FB 100%);">
+      <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 7vw, 112px) 28px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(28px, 4vw, 72px); align-items: start;">
+          <h2 data-reveal="1" style="font-family: 'Sora', sans-serif; font-size: clamp(1.9rem, 3.2vw, 2.9rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; margin: 0; text-wrap: balance;">Su empresa probablemente ya sabe que puede mejorar. La pregunta es dónde empezar.</h2>
+          <p data-reveal="2" style="margin: 0; font-size: clamp(1rem, 1.15vw, 1.15rem); line-height: 1.65; color: #4A5C6B; max-width: 58ch;">No siempre hace falta comenzar con una tecnología. A veces el primer paso es entender qué está frenando el resultado, qué merece cambiar y qué capacidad tendría mayor impacto.</p>
+        </div>
+        <div style="margin-top: clamp(40px, 5vw, 72px); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          <div data-reveal="1" style="{{ neuCardStyle }}" style-hover="transform: translateY(-4px);"><span style="font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #2864E5;">01</span><p style="margin: 14px 0 0; font-size: 1.05rem; line-height: 1.5; font-weight: 500;">Procesos manuales que consumen tiempo y atención.</p></div>
+          <div data-reveal="2" style="{{ neuCardStyle }}" style-hover="transform: translateY(-4px);"><span style="font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #2864E5;">02</span><p style="margin: 14px 0 0; font-size: 1.05rem; line-height: 1.5; font-weight: 500;">Información dispersa que dificulta decidir.</p></div>
+          <div data-reveal="3" style="{{ neuCardStyle }}" style-hover="transform: translateY(-4px);"><span style="font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #2864E5;">03</span><p style="margin: 14px 0 0; font-size: 1.05rem; line-height: 1.5; font-weight: 500;">Sistemas que no conversan entre sí.</p></div>
+          <div data-reveal="4" style="{{ neuCardStyle }}" style-hover="transform: translateY(-4px);"><span style="font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #2864E5;">04</span><p style="margin: 14px 0 0; font-size: 1.05rem; line-height: 1.5; font-weight: 500;">Experiencias digitales que ya no representan la empresa.</p></div>
+          <div data-reveal="5" style="{{ neuCardStyle }}" style-hover="transform: translateY(-4px);"><span style="font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #2864E5;">05</span><p style="margin: 14px 0 0; font-size: 1.05rem; line-height: 1.5; font-weight: 500;">Trabajo repetitivo que podría automatizarse.</p></div>
+          <div data-reveal="6" style="{{ neuCardStyle }}" style-hover="transform: translateY(-4px);"><span style="font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #2864E5;">06</span><p style="margin: 14px 0 0; font-size: 1.05rem; line-height: 1.5; font-weight: 500;">Oportunidades de IA sin claridad sobre dónde generan valor.</p></div>
+          <div data-reveal="7" style="{{ neuCardStyle }}" style-hover="transform: translateY(-4px);"><span style="font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #2864E5;">07</span><p style="margin: 14px 0 0; font-size: 1.05rem; line-height: 1.5; font-weight: 500;">Productos o procesos que necesitan escalar.</p></div>
+        </div>
+        <p data-reveal="1" style="margin: clamp(40px, 5vw, 64px) 0 0; font-family: 'Sora', sans-serif; font-size: clamp(1.2rem, 2vw, 1.7rem); line-height: 1.32; letter-spacing: -0.015em; max-width: 42ch;">Usted no necesita llegar con la solución definida. Puede llegar con la oportunidad.</p>
+      </div>
+    </section>
+
+    <section id="mejorar" style="background: #F5F8FB;">
+      <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 7vw, 112px) 28px;">
+        <h2 data-reveal="1" style="font-family: 'Sora', sans-serif; font-size: clamp(1.9rem, 3.2vw, 2.9rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; margin: 0;">¿Qué necesita mejorar su empresa?</h2>
+        <p data-reveal="2" style="margin: 18px 0 0; font-size: clamp(1rem, 1.15vw, 1.15rem); line-height: 1.65; color: #4A5C6B; max-width: 56ch;">Partimos del resultado que busca, no de la tecnología que está de moda.</p>
+        <div style="margin-top: clamp(36px, 4.5vw, 60px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(24px, 3vw, 48px); align-items: start;">
+          <div role="list" style="display: grid; gap: 8px;">
+            <sc-for list="{{ outcomes }}" as="o" hint-placeholder-count="8">
+              <button type="button" role="listitem" onClick="{{ o.select }}" style="{{ o.style }}" style-hover="transform: translateX(3px);">
+                <span style="{{ o.barStyle }}"></span>
+                <span>{{ o.label }}</span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="background: rgba(255,255,255,0.68); backdrop-filter: blur(22px) saturate(1.3); border-radius: 26px; padding: clamp(26px, 3.2vw, 42px); box-shadow: 0 20px 50px rgba(7,20,33,0.09), inset 0 0 0 1px rgba(255,255,255,0.8); position: sticky; top: 96px; overflow: hidden;">
+            <p style="margin: 0 0 16px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #2864E5;">Resultado buscado</p>
+            <h3 style="font-family: 'Sora', sans-serif; font-size: clamp(1.35rem, 2vw, 1.85rem); line-height: 1.18; letter-spacing: -0.02em; font-weight: 600; margin: 0;">{{ activeLabel }}</h3>
+            <p style="margin: 18px 0 0; font-size: 1.05rem; line-height: 1.65; color: #4A5C6B;">{{ activeBody }}</p>
+            <p style="margin: 30px 0 12px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8296A6;">Capacidades que suelen intervenir</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ activeCaps }}" as="cap" hint-placeholder-count="3">
+                <span style="padding: 8px 15px; border-radius: 999px; background: #FFFFFF; font-size: 13px; font-weight: 500; box-shadow: 4px 4px 10px rgba(7,20,33,0.07), -3px -3px 9px rgba(255,255,255,0.95);">{{ cap }}</span>
+              </sc-for>
+            </div>
+            <a href="#contacto" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 30px; min-height: 44px; font-size: 15px; font-weight: 600; color: #2864E5;" style-hover="gap: 14px;">Cuéntenos qué necesita mejorar <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <sc-if value="{{ showAgentic }}" hint-placeholder-val="{{ true }}">
+      <section id="agentic" style="background: #FFFFFF;">
+        <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 7vw, 112px) 28px;">
+          <p data-reveal="1" style="display: flex; align-items: center; gap: 12px; margin: 0 0 22px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C6F80;"><span style="width: 26px; height: 1px; background: #7467E8;"></span>Agentic AI</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(28px, 4vw, 72px); align-items: start;">
+            <h2 data-reveal="2" style="font-family: 'Sora', sans-serif; font-size: clamp(1.9rem, 3.2vw, 2.9rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; margin: 0; text-wrap: balance;">Agentes que no solo responden: ejecutan trabajo con gobierno.</h2>
+            <p data-reveal="3" style="margin: 0; font-size: clamp(1rem, 1.15vw, 1.15rem); line-height: 1.65; color: #4A5C6B; max-width: 58ch;">Diseñamos e implementamos soluciones de IA agéntica: sistemas que ejecutan tareas de principio a fin dentro de un alcance definido, con criterios de decisión explícitos, trazabilidad y responsabilidad humana sobre lo que importa.</p>
+          </div>
+          <div style="margin-top: clamp(40px, 5vw, 72px); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;">
+            <div data-reveal="1" style="{{ glassCardStyle }}" style-hover="transform: translateY(-5px);">
+              <span style="display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: rgba(40,100,229,0.1); font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 600; color: #2864E5;">01</span>
+              <h3 style="font-family: 'Sora', sans-serif; font-size: 1.2rem; font-weight: 600; letter-spacing: -0.015em; margin: 20px 0 12px;">Trabajo delegado, no solo asistido</h3>
+              <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #4A5C6B;">El agente completa el flujo —consulta, decide, actúa e informa— en lugar de devolver una sugerencia que alguien debe volver a ejecutar.</p>
+            </div>
+            <div data-reveal="2" style="{{ glassCardStyle }}" style-hover="transform: translateY(-5px);">
+              <span style="display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: rgba(39,199,217,0.14); font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 600; color: #0E7C8A;">02</span>
+              <h3 style="font-family: 'Sora', sans-serif; font-size: 1.2rem; font-weight: 600; letter-spacing: -0.015em; margin: 20px 0 12px;">Alcance, límites y trazabilidad</h3>
+              <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #4A5C6B;">Definimos qué puede hacer el agente, qué requiere aprobación humana y cómo queda registrada cada decisión relevante.</p>
+            </div>
+            <div data-reveal="3" style="{{ glassCardStyle }}" style-hover="transform: translateY(-5px);">
+              <span style="display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: rgba(116,103,232,0.12); font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 600; color: #5A4DD4;">03</span>
+              <h3 style="font-family: 'Sora', sans-serif; font-size: 1.2rem; font-weight: 600; letter-spacing: -0.015em; margin: 20px 0 12px;">Valor medible antes de escalar</h3>
+              <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #4A5C6B;">Empezamos donde el costo de equivocarse es manejable, medimos el resultado y solo entonces ampliamos el alcance del agente.</p>
+            </div>
+          </div>
+          <p data-reveal="1" style="margin: clamp(32px, 4vw, 52px) 0 0; font-size: 1.05rem; line-height: 1.7; color: #4A5C6B; max-width: 62ch;">Aplicamos IA agéntica cuando mejora de forma justificable la capacidad de trabajar, decidir, aprender o escalar. Cuando no, lo decimos.</p>
+        </div>
+      </section>
+    </sc-if>
+
+    <section style="background: linear-gradient(180deg, #FFFFFF 0%, #F5F8FB 100%);">
+      <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 7vw, 112px) 28px;">
+        <h2 data-reveal="1" style="font-family: 'Sora', sans-serif; font-size: clamp(1.9rem, 3.2vw, 2.9rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; margin: 0 0 clamp(36px, 4.5vw, 64px);">Una sombrilla. Dos maneras de crear valor.</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+          <div data-reveal="1" style="{{ glassCardStyle }}" style-hover="transform: translateY(-5px);">
+            <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #2864E5;">Soluciones</span>
+            <h3 style="font-family: 'Sora', sans-serif; font-size: clamp(1.3rem, 1.9vw, 1.65rem); line-height: 1.22; letter-spacing: -0.02em; font-weight: 600; margin: 16px 0 14px;">Creamos soluciones propias cuando encontramos oportunidades que merecen convertirse en capacidades.</h3>
+            <p style="margin: 0; font-size: 1.02rem; line-height: 1.65; color: #4A5C6B;">Productos y programas ya creados bajo AI Tech Umbrella, disponibles para las personas y organizaciones a las que están dirigidos.</p>
+            <a href="#soluciones" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; min-height: 44px; font-size: 15px; font-weight: 600; color: #2864E5;" style-hover="gap: 14px;">Ver soluciones <span aria-hidden="true">→</span></a>
+          </div>
+          <div data-reveal="2" style="{{ glassCardStyle }}" style-hover="transform: translateY(-5px);">
+            <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #2864E5;">Servicios</span>
+            <h3 style="font-family: 'Sora', sans-serif; font-size: clamp(1.3rem, 1.9vw, 1.65rem); line-height: 1.22; letter-spacing: -0.02em; font-weight: 600; margin: 16px 0 14px;">Trabajamos con su organización para entender, diseñar, construir e integrar la capacidad que necesita.</h3>
+            <p style="margin: 0; font-size: 1.02rem; line-height: 1.65; color: #4A5C6B;">Capacidades estratégicas y tecnológicas que combinamos alrededor de la oportunidad específica de cada empresa.</p>
+            <a href="#servicios" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; min-height: 44px; font-size: 15px; font-weight: 600; color: #2864E5;" style-hover="gap: 14px;">Explorar servicios <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="soluciones" style="background: #F5F8FB;">
+      <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 7vw, 112px) 28px;">
+        <h2 data-reveal="1" style="font-family: 'Sora', sans-serif; font-size: clamp(1.9rem, 3.2vw, 2.9rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; margin: 0;">Soluciones que nacen bajo Umbrella.</h2>
+        <p data-reveal="2" style="margin: 18px 0 0; font-size: clamp(1rem, 1.15vw, 1.15rem); line-height: 1.65; color: #4A5C6B; max-width: 60ch;">Productos y programas creados para convertir necesidades concretas en experiencias y capacidades que pueden evolucionar.</p>
+        <div style="margin-top: clamp(40px, 5vw, 72px); display: grid; gap: 20px;">
+          <article data-reveal="1" style="{{ solCardStyle }}" style-hover="transform: translateY(-4px);">
+            <div>
+              <p style="margin: 0 0 10px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8296A6;">Finanzas personales</p>
+              <h3 style="font-family: 'Sora', sans-serif; font-size: clamp(1.6rem, 2.5vw, 2.25rem); line-height: 1.08; letter-spacing: -0.03em; font-weight: 700; margin: 0;">Cartera<span style="color: #2864E5;">+</span></h3>
+              <p style="margin: 12px 0 0; font-family: 'Sora', sans-serif; font-size: 1.1rem; font-weight: 500;">Finanzas personales con dirección.</p>
+            </div>
+            <div>
+              <p style="margin: 0; font-size: 1.02rem; line-height: 1.7; color: #4A5C6B; max-width: 54ch;">Una plataforma de finanzas personales creada para ayudar a las personas a comprender mejor su dinero y avanzar hacia decisiones más conscientes.</p>
+              <a href="#contacto" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; min-height: 44px; font-size: 15px; font-weight: 600; color: #2864E5;" style-hover="gap: 14px;">Conocer Cartera+ <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article data-reveal="2" style="{{ solCardStyle }}" style-hover="transform: translateY(-4px);">
+            <div>
+              <p style="margin: 0 0 10px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8296A6;">Operación clínica</p>
+              <h3 style="font-family: 'Sora', sans-serif; font-size: clamp(1.6rem, 2.5vw, 2.25rem); line-height: 1.08; letter-spacing: -0.03em; font-weight: 700; margin: 0;">AuraCare</h3>
+              <p style="margin: 12px 0 0; font-family: 'Sora', sans-serif; font-size: 1.1rem; font-weight: 500;">Tecnología diseñada alrededor de la operación clínica.</p>
+            </div>
+            <div>
+              <p style="margin: 0; font-size: 1.02rem; line-height: 1.7; color: #4A5C6B; max-width: 54ch;">Una solución digital orientada a conectar y evolucionar la gestión de operaciones clínicas y odontológicas.</p>
+              <a href="#contacto" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; min-height: 44px; font-size: 15px; font-weight: 600; color: #2864E5;" style-hover="gap: 14px;">Conocer AuraCare <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article data-reveal="3" style="{{ solCardStyle }}" style-hover="transform: translateY(-4px);">
+            <div>
+              <p style="margin: 0 0 10px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8296A6;">Educación y mentoría</p>
+              <h3 style="font-family: 'Sora', sans-serif; font-size: clamp(1.6rem, 2.5vw, 2.25rem); line-height: 1.08; letter-spacing: -0.03em; font-weight: 700; margin: 0;">Financial Glow Up</h3>
+              <p style="margin: 12px 0 0; font-family: 'Sora', sans-serif; font-size: 1.1rem; font-weight: 500;">Conocimiento financiero convertido en capacidad.</p>
+            </div>
+            <div>
+              <p style="margin: 0; font-size: 1.02rem; line-height: 1.7; color: #4A5C6B; max-width: 54ch;">Educación, acompañamiento, asesoría y mentoría financiera para desarrollar mejores capacidades y decisiones alrededor de las finanzas personales.</p>
+              <a href="#contacto" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; min-height: 44px; font-size: 15px; font-weight: 600; color: #2864E5;" style-hover="gap: 14px;">Conocer Financial Glow Up <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-trabajamos" style="background: #FFFFFF;">
+      <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 7vw, 112px) 28px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(28px, 4vw, 72px); align-items: start;">
+          <h2 data-reveal="1" style="font-family: 'Sora', sans-serif; font-size: clamp(1.9rem, 3.2vw, 2.9rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; margin: 0;">Primero entendemos. Luego construimos.</h2>
+          <p data-reveal="2" style="margin: 0; font-size: clamp(1rem, 1.15vw, 1.15rem); line-height: 1.65; color: #4A5C6B; max-width: 56ch;">Nuestra forma de trabajar conecta estrategia, ejecución y aprendizaje para que la tecnología termine convertida en una capacidad real.</p>
+        </div>
+        <ol style="list-style: none; margin: clamp(40px, 5vw, 72px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px;">
+          <li data-reveal="1" style="{{ stepStyle }}" style-hover="transform: translateY(-5px);"><span style="display: block; font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; color: #2864E5;">01</span><h3 style="font-family: 'Sora', sans-serif; font-size: 1.22rem; font-weight: 600; letter-spacing: -0.015em; margin: 14px 0 12px;">Discover</h3><p style="margin: 0; font-size: 0.97rem; line-height: 1.6; color: #4A5C6B;">Entendemos la oportunidad, el contexto y lo que realmente merece mejorar.</p></li>
+          <li data-reveal="2" style="{{ stepStyle }}" style-hover="transform: translateY(-5px);"><span style="display: block; font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; color: #2864E5;">02</span><h3 style="font-family: 'Sora', sans-serif; font-size: 1.22rem; font-weight: 600; letter-spacing: -0.015em; margin: 14px 0 12px;">Design</h3><p style="margin: 0; font-size: 0.97rem; line-height: 1.6; color: #4A5C6B;">Definimos la intervención, sus límites, alternativas y la manera responsable de crear valor.</p></li>
+          <li data-reveal="3" style="{{ stepStyle }}" style-hover="transform: translateY(-5px);"><span style="display: block; font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; color: #2864E5;">03</span><h3 style="font-family: 'Sora', sans-serif; font-size: 1.22rem; font-weight: 600; letter-spacing: -0.015em; margin: 14px 0 12px;">Deliver</h3><p style="margin: 0; font-size: 0.97rem; line-height: 1.6; color: #4A5C6B;">Construimos, integramos y gobernamos la solución con visibilidad sobre decisiones, cambios y riesgos.</p></li>
+          <li data-reveal="4" style="{{ stepStyle }}" style-hover="transform: translateY(-5px);"><span style="display: block; font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; color: #2864E5;">04</span><h3 style="font-family: 'Sora', sans-serif; font-size: 1.22rem; font-weight: 600; letter-spacing: -0.015em; margin: 14px 0 12px;">Demonstrate</h3><p style="margin: 0; font-size: 0.97rem; line-height: 1.6; color: #4A5C6B;">Transferimos la capacidad y buscamos evidencia de que la solución genera el valor esperado.</p></li>
+          <li data-reveal="5" style="{{ stepStyle }}" style-hover="transform: translateY(-5px);"><span style="display: block; font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; color: #2864E5;">05</span><h3 style="font-family: 'Sora', sans-serif; font-size: 1.22rem; font-weight: 600; letter-spacing: -0.015em; margin: 14px 0 12px;">Evolve</h3><p style="margin: 0; font-size: 0.97rem; line-height: 1.6; color: #4A5C6B;">Convertimos resultados y aprendizaje en la siguiente mejor decisión.</p></li>
+        </ol>
+        <p data-reveal="1" style="margin: 36px 0 0; font-size: 1.02rem; line-height: 1.65; color: #4A5C6B; max-width: 60ch;">Los gates no existen para retrasar el trabajo; existen para impedir que avancemos más rápido que nuestra evidencia.</p>
+      </div>
+    </section>
+
+    <section id="servicios" style="background: #F5F8FB;">
+      <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 7vw, 112px) 28px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(28px, 4vw, 72px); align-items: start;">
+          <h2 data-reveal="1" style="font-family: 'Sora', sans-serif; font-size: clamp(1.9rem, 3.2vw, 2.9rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; margin: 0;">Capacidades conectadas. Una sola visión.</h2>
+          <p data-reveal="2" style="margin: 0; font-size: clamp(1rem, 1.15vw, 1.15rem); line-height: 1.65; color: #4A5C6B; max-width: 56ch;">No vendemos tecnologías aisladas. Combinamos las capacidades necesarias alrededor de la oportunidad que su organización necesita resolver.</p>
+        </div>
+        <div style="margin-top: clamp(40px, 5vw, 72px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px;">
+          <div data-reveal="1" style="{{ capCardStyle }}" style-hover="transform: translateY(-5px);"><h3 style="font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.015em; margin: 0 0 12px;">Umbrella Automation</h3><p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #4A5C6B;">Automatizamos trabajo, flujos e interacciones para reducir fricción y liberar capacidad. La automatización se diseña alrededor del proceso, no de la herramienta.</p></div>
+          <div data-reveal="2" style="{{ capCardStyle }}" style-hover="transform: translateY(-5px);"><h3 style="font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.015em; margin: 0 0 12px;">Umbrella Intelligence</h3><p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #4A5C6B;">Aplicamos inteligencia artificial —incluida IA agéntica— donde puede aumentar capacidad, claridad o velocidad, sin convertirla en un fin por sí misma.</p></div>
+          <div data-reveal="3" style="{{ capCardStyle }}" style-hover="transform: translateY(-5px);"><h3 style="font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.015em; margin: 0 0 12px;">Umbrella Data</h3><p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #4A5C6B;">Organizamos, conectamos y hacemos útil la información necesaria para entender y decidir mejor.</p></div>
+          <div data-reveal="4" style="{{ capCardStyle }}" style-hover="transform: translateY(-5px);"><h3 style="font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.015em; margin: 0 0 12px;">Umbrella Digital</h3><p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #4A5C6B;">Diseñamos experiencias, presencia y productos digitales capaces de representar y hacer avanzar el negocio.</p></div>
+          <div data-reveal="5" style="{{ capCardStyle }}" style-hover="transform: translateY(-5px);"><h3 style="font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.015em; margin: 0 0 12px;">Umbrella Development</h3><p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #4A5C6B;">Construimos software e integraciones cuando la capacidad que el negocio necesita merece una solución propia.</p></div>
+          <div data-reveal="6" style="{{ capAccentStyle }}" style-hover="transform: translateY(-5px);"><h3 style="font-family: 'Sora', sans-serif; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.015em; margin: 0 0 12px;">Umbrella Agents</h3><p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #4A5C6B;">Diseñamos y operamos agentes de IA que ejecutan trabajo con alcance definido, criterios de decisión explícitos y supervisión humana.</p></div>
+        </div>
+        <p data-reveal="1" style="margin: 36px 0 0; font-size: 1.02rem; line-height: 1.7; color: #4A5C6B; max-width: 64ch;">Una necesidad puede comenzar como un problema de operación, requerir integración de datos, incorporar automatización y terminar necesitando una experiencia digital. La solución determina la combinación; el catálogo no.</p>
+      </div>
+    </section>
+
+    <section id="confianza" style="background: #FFFFFF;">
+      <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 7vw, 112px) 28px;">
+        <h2 data-reveal="1" style="font-family: 'Sora', sans-serif; font-size: clamp(1.9rem, 3.2vw, 2.9rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; margin: 0;">La tecnología importa. El criterio importa más.</h2>
+        <div style="margin-top: clamp(36px, 4.5vw, 60px); display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px 36px;">
+          <p data-reveal="1" style="{{ principleStyle }}">Comprendemos antes de construir.</p>
+          <p data-reveal="2" style="{{ principleStyle }}">La evidencia limita la certeza de nuestras afirmaciones.</p>
+          <p data-reveal="3" style="{{ principleStyle }}">El valor precede a la tecnología.</p>
+          <p data-reveal="4" style="{{ principleStyle }}">Integramos capacidades en lugar de fragmentarlas.</p>
+          <p data-reveal="5" style="{{ principleStyle }}">Gobernamos decisiones, cambios y riesgos.</p>
+          <p data-reveal="6" style="{{ principleStyle }}">Medimos después del go-live.</p>
+          <p data-reveal="7" style="{{ principleStyle }}">Buscamos relaciones basadas en valor, no en dependencia.</p>
+        </div>
+        <blockquote data-reveal="1" style="margin: clamp(44px, 5.5vw, 76px) 0 0; padding: 0; max-width: 52ch;">
+          <p style="margin: 0; font-family: 'Sora', sans-serif; font-size: clamp(1.3rem, 2.3vw, 1.95rem); line-height: 1.28; letter-spacing: -0.025em;">Queremos que una solución sea buena no porque se vea sofisticada, sino porque pueda explicar por qué existe, cómo funciona, qué riesgo asume y qué capacidad deja detrás.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <section id="compania" style="background: #F5F8FB;">
+      <div style="max-width: 1280px; margin: 0 auto; padding: clamp(64px, 7vw, 112px) 28px;">
+        <p data-reveal="1" style="display: flex; align-items: center; gap: 12px; margin: 0 0 22px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C6F80;"><span style="width: 26px; height: 1px; background: #27C7D9;"></span>Compañía</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(28px, 4vw, 72px); align-items: start;">
+          <h2 data-reveal="2" style="font-family: 'Sora', sans-serif; font-size: clamp(1.9rem, 3.2vw, 2.9rem); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; margin: 0; text-wrap: balance;">Desde Costa Rica, para las empresas de América Latina.</h2>
+          <p data-reveal="3" style="margin: 0; font-size: clamp(1rem, 1.15vw, 1.15rem); line-height: 1.65; color: #4A5C6B; max-width: 58ch;">AI Tech Umbrella LLC es una compañía constituida en Florida, Estados Unidos, con su equipo y operación en San José, Costa Rica. Trabajamos con organizaciones latinoamericanas que necesitan un socio tecnológico capaz de entender su contexto, su idioma y su realidad operativa.</p>
+        </div>
+        <div style="margin-top: clamp(36px, 4.5vw, 64px); display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;">
+          <div data-reveal="1" style="{{ glassCardStyle }}">
+            <p style="margin: 0 0 12px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8296A6;">Razón social</p>
+            <p style="margin: 0; font-family: 'Sora', sans-serif; font-size: 1.15rem; font-weight: 600;">AI Tech Umbrella LLC</p>
+            <p style="margin: 12px 0 0; font-size: 0.98rem; line-height: 1.6; color: #4A5C6B;">Limited Liability Company constituida en el estado de Florida, Estados Unidos.</p>
+          </div>
+          <div data-reveal="2" style="{{ glassCardStyle }}">
+            <p style="margin: 0 0 12px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8296A6;">Oficina principal</p>
+            <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #4A5C6B;">2 S Biscayne Boulevard, Ste 3200 #7206<br>Miami, Florida 33131<br>Estados Unidos</p>
+          </div>
+          <div data-reveal="3" style="{{ glassCardStyle }}">
+            <p style="margin: 0 0 12px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8296A6;">Operación</p>
+            <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #4A5C6B;">San José, Costa Rica.<br>Atención a clientes en toda América Latina, en español.</p>
+          </div>
+          <div data-reveal="4" style="{{ glassCardStyle }}">
+            <p style="margin: 0 0 12px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8296A6;">Dirección de la compañía</p>
+            <p style="margin: 0; font-size: 1rem; line-height: 1.7; color: #4A5C6B;">Gustavo Adolfo Sáenz Herrera<br>Guillermo Andrés Rivera Guzmán<br>David Johan Castro Fernández</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" style="position: relative; background: #FFFFFF; overflow: hidden;">
+      <div style="position: absolute; inset: -20% -10% auto; height: 420px; background: radial-gradient(60% 60% at 50% 0%, rgba(40,100,229,0.12) 0%, rgba(39,199,217,0.06) 45%, rgba(255,255,255,0) 75%);"></div>
+      <div style="position: relative; max-width: 1280px; margin: 0 auto; padding: clamp(72px, 8vw, 132px) 28px; text-align: center;">
+        <h2 data-reveal="1" style="font-family: 'Sora', sans-serif; font-size: clamp(2rem, 3.8vw, 3.4rem); line-height: 1.08; letter-spacing: -0.03em; font-weight: 700; margin: 0 auto; max-width: 26ch; text-wrap: balance;">¿Qué podría mejorar su empresa si tuviera claridad sobre dónde empezar?</h2>
+        <p data-reveal="2" style="margin: 24px auto 0; max-width: 50ch; font-size: clamp(1.05rem, 1.25vw, 1.2rem); line-height: 1.6; color: #4A5C6B;">Conversemos sobre la oportunidad antes de hablar de tecnología.</p>
+        <div data-reveal="3" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 40px;">
+          <a href="#contacto" style="{{ ctaStyle }}" style-hover="transform: translateY(-2px); filter: brightness(1.06);">Agendar una conversación</a>
+          <a href="#soluciones" style="{{ glassBtnStyle }}" style-hover="transform: translateY(-2px); background: rgba(255,255,255,0.9);">Explorar soluciones</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background: #F5F8FB; border-top: 1px solid rgba(7,20,33,0.07);">
+    <div style="max-width: 1280px; margin: 0 auto; padding: clamp(48px, 5.5vw, 80px) 28px 36px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: clamp(28px, 4vw, 56px);">
+      <div>
+        <span style="display: flex; flex-direction: column; line-height: 1;">
+          <span style="font-size: 9.5px; font-weight: 600; letter-spacing: 0.22em; color: #8296A6;">AI TECH</span>
+          <span style="font-family: 'Sora', sans-serif; font-size: 19px; font-weight: 600; letter-spacing: -0.01em; margin-top: 4px;">Umbrella</span>
+        </span>
+        <p style="margin: 18px 0 0; font-size: 0.95rem; line-height: 1.6; color: #4A5C6B; max-width: 32ch;">Transformamos oportunidades en soluciones inteligentes.</p>
+      </div>
+      <div>
+        <p style="margin: 0 0 14px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8296A6;">Soluciones</p>
+        <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; font-size: 0.95rem;">
+          <li><a href="#soluciones" style="color: #4A5C6B;" style-hover="color: #2864E5;">Cartera+</a></li>
+          <li><a href="#soluciones" style="color: #4A5C6B;" style-hover="color: #2864E5;">AuraCare</a></li>
+          <li><a href="#soluciones" style="color: #4A5C6B;" style-hover="color: #2864E5;">Financial Glow Up</a></li>
+        </ul>
+      </div>
+      <div>
+        <p style="margin: 0 0 14px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8296A6;">Servicios</p>
+        <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; font-size: 0.95rem;">
+          <li><a href="#servicios" style="color: #4A5C6B;" style-hover="color: #2864E5;">Automation</a></li>
+          <li><a href="#servicios" style="color: #4A5C6B;" style-hover="color: #2864E5;">Intelligence</a></li>
+          <li><a href="#agentic" style="color: #4A5C6B;" style-hover="color: #2864E5;">Agents · Agentic AI</a></li>
+          <li><a href="#servicios" style="color: #4A5C6B;" style-hover="color: #2864E5;">Data</a></li>
+          <li><a href="#servicios" style="color: #4A5C6B;" style-hover="color: #2864E5;">Digital</a></li>
+          <li><a href="#servicios" style="color: #4A5C6B;" style-hover="color: #2864E5;">Development</a></li>
+        </ul>
+      </div>
+      <div>
+        <p style="margin: 0 0 14px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8296A6;">Compañía</p>
+        <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; font-size: 0.95rem;">
+          <li><a href="#como-trabajamos" style="color: #4A5C6B;" style-hover="color: #2864E5;">Cómo trabajamos</a></li>
+          <li><a href="#compania" style="color: #4A5C6B;" style-hover="color: #2864E5;">Compañía</a></li>
+          <li><a href="#confianza" style="color: #4A5C6B;" style-hover="color: #2864E5;">Confianza</a></li>
+          <li><a href="#contacto" style="color: #4A5C6B;" style-hover="color: #2864E5;">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="max-width: 1280px; margin: 0 auto; padding: 22px 28px 44px; border-top: 1px solid rgba(7,20,33,0.07); display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; font-size: 0.85rem; color: #8296A6;">
+      <span>© 2026 AI Tech Umbrella LLC</span>
+      <span>Florida, EE. UU. · Operación en San José, Costa Rica</span>
+      <a href="#contacto" style="color: #8296A6;" style-hover="color: #2864E5;">Privacidad</a>
+      <a href="#contacto" style="color: #8296A6;" style-hover="color: #2864E5;">Términos</a>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showAgenticSection&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Secciones&quot;},&quot;revealOnScroll&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Movimiento&quot;},&quot;ctaVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Degradado azul → cian&quot;,&quot;Azul sólido&quot;],&quot;default&quot;:&quot;Degradado azul → cian&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;}}">
+class Component extends DCLogic {
+  state = { active: 0 };
+
+  componentDidMount() {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const enabled = (this.props.revealOnScroll ?? true) && !reduce;
+    const nodes = Array.from(document.querySelectorAll("[data-reveal]"));
+    const show = (el) => { el.style.opacity = "1"; el.style.transform = "none"; };
+    if (!enabled) { nodes.forEach(show); return; }
+    nodes.forEach((el) => {
+      const d = (parseInt(el.getAttribute("data-reveal"), 10) || 1) - 1;
+      el.style.opacity = "0";
+      el.style.transform = "translateY(20px)";
+      el.style.transition = "opacity 620ms cubic-bezier(.22,1,.36,1) " + (d * 70) + "ms, transform 620ms cubic-bezier(.22,1,.36,1) " + (d * 70) + "ms";
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+    nodes.forEach((el) => io.observe(el));
+    this._safety = setTimeout(() => nodes.forEach(show), 2600);
+  }
+
+  componentWillUnmount() { clearTimeout(this._safety); }
+
+  data() {
+    return [
+      { label: "Operar con menos fricción",
+        body: "Revisamos cómo funciona hoy el proceso, dónde se pierde tiempo y qué pasos dejan de ser necesarios cuando la operación se rediseña con criterio.",
+        caps: ["Automation", "Data", "Development"] },
+      { label: "Tomar mejores decisiones con información",
+        body: "Ordenamos y conectamos la información dispersa para que las decisiones dejen de depender de reportes tardíos o de la intuición.",
+        caps: ["Data", "Intelligence"] },
+      { label: "Automatizar trabajo repetitivo",
+        body: "Identificamos el trabajo repetitivo que consume capacidad y diseñamos la automatización alrededor del proceso, no alrededor de la herramienta.",
+        caps: ["Automation", "Agents", "Development"] },
+      { label: "Delegar trabajo a agentes de IA",
+        body: "Definimos qué tareas puede ejecutar un agente de principio a fin, con qué límites, qué requiere aprobación humana y cómo se audita cada decisión.",
+        caps: ["Agents", "Intelligence", "Data"] },
+      { label: "Conectar sistemas y procesos",
+        body: "Integramos herramientas, áreas y datos que hoy operan de forma aislada para que la empresa funcione como un solo sistema.",
+        caps: ["Development", "Data", "Automation"] },
+      { label: "Crear o evolucionar productos digitales",
+        body: "Convertimos una idea, una necesidad o un producto existente en una solución digital que puede escalar y seguir evolucionando.",
+        caps: ["Digital", "Development"] },
+      { label: "Mejorar la experiencia digital",
+        body: "Alineamos presencia, marca e interacción con la calidad real de la empresa y con el resultado comercial que busca.",
+        caps: ["Digital", "Data"] },
+      { label: "Preparar capacidades para escalar",
+        body: "Diseñamos procesos y tecnología que sostienen el crecimiento en lugar de convertirse en el próximo cuello de botella.",
+        caps: ["Development", "Automation", "Intelligence"] }
+    ];
+  }
+
+  renderVals() {
+    const items = this.data();
+    const i = Math.min(this.state.active, items.length - 1);
+    const grad = (this.props.ctaVariant ?? "Degradado azul → cian") === "Degradado azul → cian";
+    const bg = grad ? "linear-gradient(100deg, #2864E5 0%, #2470DF 55%, #27C7D9 100%)" : "#2864E5";
+    const ease = "cubic-bezier(.22,1,.36,1)";
+    const neu = "background: #FFFFFF; border-radius: 22px; padding: 28px; box-shadow: 8px 8px 22px rgba(7,20,33,0.06), -6px -6px 18px rgba(255,255,255,0.95), inset 0 0 0 1px rgba(7,20,33,0.04); transition: transform 320ms " + ease + ", box-shadow 320ms " + ease + ";";
+    const glass = "background: rgba(255,255,255,0.62); backdrop-filter: blur(20px) saturate(1.3); border-radius: 24px; padding: clamp(26px, 3vw, 36px); box-shadow: 0 16px 44px rgba(7,20,33,0.08), inset 0 0 0 1px rgba(255,255,255,0.8); transition: transform 340ms " + ease + ";";
+    return {
+      showAgentic: this.props.showAgenticSection ?? true,
+      ctaStyle: "display: inline-flex; align-items: center; min-height: 54px; padding: 16px 30px; border-radius: 16px; border: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 600; color: #FFFFFF; background: " + bg + "; box-shadow: 10px 12px 28px rgba(40,100,229,0.28), -6px -6px 18px rgba(255,255,255,0.9); transition: transform 300ms " + ease + ", filter 300ms " + ease + ";",
+      ctaSmallStyle: "display: inline-flex; align-items: center; min-height: 44px; padding: 12px 20px; border-radius: 999px; font-size: 14px; font-weight: 600; color: #FFFFFF; background: " + bg + "; box-shadow: 6px 8px 18px rgba(40,100,229,0.26), -4px -4px 12px rgba(255,255,255,0.9); transition: transform 300ms " + ease + ", filter 300ms " + ease + ";",
+      glassBtnStyle: "display: inline-flex; align-items: center; min-height: 54px; padding: 16px 30px; border-radius: 16px; background: rgba(255,255,255,0.65); backdrop-filter: blur(18px) saturate(1.4); font-size: 16px; font-weight: 600; color: #071421; box-shadow: 0 12px 30px rgba(7,20,33,0.1), inset 0 0 0 1px rgba(255,255,255,0.85); transition: transform 300ms " + ease + ", background 300ms " + ease + ";",
+      neuCardStyle: neu,
+      glassCardStyle: glass,
+      stepStyle: neu,
+      capCardStyle: neu,
+      capAccentStyle: "background: linear-gradient(160deg, rgba(40,100,229,0.07) 0%, rgba(39,199,217,0.07) 100%); border-radius: 22px; padding: 28px; box-shadow: 8px 8px 22px rgba(40,100,229,0.1), -6px -6px 18px rgba(255,255,255,0.95), inset 0 0 0 1px rgba(40,100,229,0.12); transition: transform 320ms " + ease + ";",
+      solCardStyle: "display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(20px, 3vw, 56px); align-items: center; background: #FFFFFF; border-radius: 26px; padding: clamp(28px, 3.4vw, 44px); box-shadow: 10px 10px 28px rgba(7,20,33,0.06), -8px -8px 22px rgba(255,255,255,0.95), inset 0 0 0 1px rgba(7,20,33,0.04); transition: transform 340ms " + ease + ";",
+      principleStyle: "margin: 0; padding-left: 18px; border-left: 2px solid #2864E5; font-family: 'Sora', sans-serif; font-size: 1.08rem; font-weight: 500; line-height: 1.4;",
+      outcomes: items.map((o, idx) => ({
+        label: o.label,
+        select: () => this.setState({ active: idx }),
+        style: "display: flex; align-items: center; gap: 16px; width: 100%; text-align: left; padding: 18px 22px; border: 0; border-radius: 16px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 500; cursor: pointer; min-height: 58px; color: " + (idx === i ? "#071421" : "#4A5C6B") + "; background: " + (idx === i ? "#FFFFFF" : "rgba(255,255,255,0.45)") + "; box-shadow: " + (idx === i ? "8px 8px 20px rgba(7,20,33,0.08), -6px -6px 16px rgba(255,255,255,0.95), inset 0 0 0 1px rgba(40,100,229,0.16)" : "inset 3px 3px 8px rgba(7,20,33,0.05), inset -3px -3px 8px rgba(255,255,255,0.9)") + "; transition: transform 260ms " + ease + ", box-shadow 260ms " + ease + ", color 260ms " + ease + ";",
+        barStyle: "flex: 0 0 auto; width: 3px; height: 22px; border-radius: 3px; background: " + (idx === i ? "linear-gradient(#2864E5, #27C7D9)" : "rgba(130,150,166,0.4)") + ";"
+      })),
+      activeLabel: items[i].label,
+      activeBody: items[i].body,
+      activeCaps: items[i].caps
+    };
+  }
+}
+</script>
+</body>
+</html>

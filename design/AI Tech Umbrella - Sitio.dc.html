@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+  html, body { margin: 0; height: 100%; background: #FFFFFF; color: #071421; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #071421; text-decoration: none; }
+  a:hover { color: #2864E5; }
+  button { font: inherit; }
+  ::placeholder { color: #57697A; opacity: 1; }
+  @keyframes u-draw { 0% { stroke-dashoffset: 900; } 40%, 100% { stroke-dashoffset: 0; } }
+  @keyframes u-pop { 0%, 10% { opacity: 0; transform: scale(.4); } 28%, 92% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(.4); } }
+  @keyframes u-breathe { 0%, 100% { transform: scale(1); opacity: .8; } 50% { transform: scale(1.08); opacity: 1; } }
+  @keyframes u-orbit { to { transform: rotate(360deg); } }
+  @keyframes u-modseq { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
+  @keyframes u-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  @keyframes u-fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes u-grid { to { transform: translate3d(-64px, -64px, 0); } }
+  @keyframes u-blob1 { 0%, 100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(6vw, 4vh, 0) scale(1.18); } }
+  @keyframes u-blob2 { 0%, 100% { transform: translate3d(0,0,0) scale(1.1); } 50% { transform: translate3d(-7vw, -3vh, 0) scale(1); } }
+  @keyframes u-blob3 { 0%, 100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(4vw, -5vh, 0) scale(1.22); } }
+  @keyframes u-marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-33.3333%,0,0); } }
+  @keyframes u-beam { 0% { transform: translate3d(-30%, 0, 0) rotate(14deg); opacity: 0; } 12%, 74% { opacity: 1; } 100% { transform: translate3d(120%, 0, 0) rotate(14deg); opacity: 0; } }
+  @keyframes u-sweep { to { transform: rotate(360deg); } }
+  @keyframes u-scan { 0% { transform: translateY(-12%); opacity: 0; } 20%, 70% { opacity: .9; } 100% { transform: translateY(112%); opacity: 0; } }
+  @keyframes a-petal { 0%, 100% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(14deg) scale(1.05); } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</helmet>
+
+<div style="position: relative; height: 100dvh; display: flex; flex-direction: column; background: #FFFFFF; overflow: hidden;">
+
+  <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;">
+    <div style="position: absolute; inset: -80px; background-image: linear-gradient(rgba(7,20,33,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(7,20,33,0.045) 1px, transparent 1px); background-size: 64px 64px; animation: u-grid 26s linear infinite; mask-image: radial-gradient(120% 90% at 50% 20%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 78%); -webkit-mask-image: radial-gradient(120% 90% at 50% 20%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 78%);"></div>
+    <div style="position: absolute; top: -14%; left: -8%; width: 52vw; height: 52vw; border-radius: 50%; background: radial-gradient(circle, rgba(40,100,229,0.16) 0%, rgba(40,100,229,0) 68%); filter: blur(24px); animation: u-blob1 26s ease-in-out infinite;"></div>
+    <div style="position: absolute; bottom: -22%; right: -10%; width: 56vw; height: 56vw; border-radius: 50%; background: radial-gradient(circle, rgba(39,199,217,0.15) 0%, rgba(39,199,217,0) 68%); filter: blur(26px); animation: u-blob2 32s ease-in-out infinite;"></div>
+    <div style="position: absolute; top: 24%; right: 22%; width: 34vw; height: 34vw; border-radius: 50%; background: radial-gradient(circle, rgba(116,103,232,0.11) 0%, rgba(116,103,232,0) 70%); filter: blur(30px); animation: u-blob3 38s ease-in-out infinite;"></div>
+    <div style="position: absolute; top: -60%; left: 50%; width: 150vw; height: 150vw; margin-left: -75vw; border-radius: 50%; background: conic-gradient(from 0deg, rgba(40,100,229,0) 0deg, rgba(40,100,229,0.07) 40deg, rgba(39,199,217,0.05) 90deg, rgba(40,100,229,0) 150deg, rgba(40,100,229,0) 360deg); animation: u-sweep 44s linear infinite; mask-image: radial-gradient(closest-side, rgba(0,0,0,0.9), rgba(0,0,0,0) 72%); -webkit-mask-image: radial-gradient(closest-side, rgba(0,0,0,0.9), rgba(0,0,0,0) 72%);"></div>
+    <div style="position: absolute; top: -20%; left: 0; width: 22vw; height: 150%; background: linear-gradient(90deg, rgba(40,100,229,0) 0%, rgba(40,100,229,0.09) 45%, rgba(39,199,217,0.05) 60%, rgba(40,100,229,0) 100%); filter: blur(10px); animation: u-beam 17s cubic-bezier(.4,0,.6,1) infinite;"></div>
+    <div style="position: absolute; top: -20%; left: 0; width: 14vw; height: 150%; background: linear-gradient(90deg, rgba(39,199,217,0) 0%, rgba(39,199,217,0.1) 50%, rgba(39,199,217,0) 100%); filter: blur(8px); animation: u-beam 23s cubic-bezier(.4,0,.6,1) infinite 6s;"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(39,199,217,0) 0%, rgba(39,199,217,0.14) 48%, rgba(39,199,217,0) 100%); height: 42%; animation: u-scan 21s cubic-bezier(.45,0,.55,1) infinite; mix-blend-mode: multiply;"></div>
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: .5;">
+      <g stroke="#2864E5" stroke-opacity=".16" fill="none">
+        <path d="M-50 520 C 220 500 300 300 620 320 S 980 180 1250 220" stroke-width="1.2"></path>
+        <path d="M-50 620 C 260 600 340 420 660 430 S 1000 300 1250 330" stroke-width="1"></path>
+        <path d="M-50 400 C 200 380 320 200 640 210 S 1010 90 1250 120" stroke-width="0.9"></path>
+      </g>
+      <g fill="#27C7D9" fill-opacity=".5">
+        <circle cx="620" cy="320" r="3"><animate attributeName="cy" values="320;312;320" dur="9s" repeatCount="indefinite"></animate></circle>
+        <circle cx="660" cy="430" r="2.6"><animate attributeName="cy" values="430;422;430" dur="11s" repeatCount="indefinite"></animate></circle>
+        <circle cx="640" cy="210" r="2.4"><animate attributeName="cy" values="210;204;210" dur="13s" repeatCount="indefinite"></animate></circle>
+      </g>
+    </svg>
+  </div>
+
+  <header style="position: relative; z-index: 20; flex: 0 0 auto; background: rgba(255,255,255,0.66); backdrop-filter: blur(24px) saturate(1.5); border-bottom: 1px solid rgba(7,20,33,0.06);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px;">
+      <button type="button" onClick="{{ goHome }}" style="display: flex; align-items: center; gap: 12px; background: none; border: 0; padding: 0; cursor: pointer;">
+        <svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <defs><linearGradient id="navMark" x1="5" y1="8" x2="35" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#2864E5"></stop><stop offset="1" stop-color="#27C7D9"></stop></linearGradient></defs>
+          <g fill="url(#navMark)">
+            <rect x="3.3" y="19" width="7" height="7" rx="2.2" style="animation: u-modseq 4.4s ease-in-out infinite 0s;"></rect>
+            <rect x="8" y="12.2" width="7" height="7" rx="2.2" style="animation: u-modseq 4.4s ease-in-out infinite .16s;"></rect>
+            <rect x="16.5" y="9.5" width="7" height="7" rx="2.2" style="animation: u-modseq 4.4s ease-in-out infinite .32s;"></rect>
+            <rect x="25" y="12.2" width="7" height="7" rx="2.2" style="animation: u-modseq 4.4s ease-in-out infinite .48s;"></rect>
+            <rect x="29.7" y="19" width="7" height="7" rx="2.2" style="animation: u-modseq 4.4s ease-in-out infinite .64s;"></rect>
+          </g>
+          <rect x="16.25" y="21.75" width="7.5" height="7.5" rx="2.4" fill="#071421"></rect>
+          <rect x="18.3" y="30.2" width="3.4" height="6" rx="1.7" fill="#071421"></rect>
+        </svg>
+        <span style="display: flex; flex-direction: column; line-height: 1; text-align: left;">
+          <span style="font-size: 9.5px; font-weight: 600; letter-spacing: 0.22em; color: #5C6F80;">AI TECH</span>
+          <span style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin-top: 3px;">Umbrella</span>
+        </span>
+      </button>
+
+      <nav aria-label="Navegación principal" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-left: auto;">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <button type="button" onClick="{{ n.go }}" aria-current="{{ n.current }}" style="{{ n.style }}" style-hover="color: #071421; background: rgba(255,255,255,0.85);">{{ n.label }}</button>
+        </sc-for>
+        <button type="button" onClick="{{ goContacto }}" style="{{ ctaSmallStyle }}" style-hover="transform: translateY(-1px); filter: brightness(1.07);">Agendar una cita</button>
+      </nav>
+    </div>
+  </header>
+
+  <main style="position: relative; z-index: 10; flex: 1 1 auto; min-height: 0; overflow-y: auto; overflow-x: hidden;">
+
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <section style="height: 100%; max-height: 100%; box-sizing: border-box; display: grid; grid-template-rows: minmax(0, 1fr); place-items: center; padding: clamp(14px, 2.6vh, 36px) 24px; animation: u-fade 700ms cubic-bezier(.22,1,.36,1) both;">
+        <div style="max-width: 1140px; width: 100%; height: 100%; max-height: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); grid-template-rows: minmax(0, 1fr); gap: clamp(18px, 3.4vw, 56px); align-items: center; min-height: 0;">
+          <div style="min-height: 0; align-self: center;">
+            <p style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0 0 clamp(12px, 2vh, 20px); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C6F80; animation: u-in 700ms cubic-bezier(.22,1,.36,1) both;">
+              <span style="width: 24px; height: 1px; background: #27C7D9;"></span>
+              <span>Estrategia</span><span aria-hidden="true">·</span><span>Agentic AI</span><span aria-hidden="true">·</span><span>Datos</span><span aria-hidden="true">·</span><span>Desarrollo</span>
+            </p>
+            <h1 style="font-family: 'Sora', sans-serif; font-size: clamp(1.85rem, 3.6vw, 3.1rem); line-height: 1.05; letter-spacing: -0.035em; font-weight: 700; margin: 0; text-wrap: balance; animation: u-in 700ms cubic-bezier(.22,1,.36,1) 90ms both;">Transformamos oportunidades en soluciones inteligentes.</h1>
+            <p style="margin: clamp(12px, 2.2vh, 24px) 0 0; max-width: 52ch; font-size: clamp(0.96rem, 1.1vw, 1.14rem); line-height: 1.58; color: #4A5C6B; animation: u-in 700ms cubic-bezier(.22,1,.36,1) 170ms both;">Entendemos su empresa, identificamos dónde puede generarse mayor impacto y conectamos las capacidades necesarias para convertir esa oportunidad en un resultado medible.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(14px, 2.4vh, 26px); animation: u-in 700ms cubic-bezier(.22,1,.36,1) 250ms both;">
+              <button type="button" onClick="{{ goContacto }}" style="{{ ctaStyle }}" style-hover="transform: translateY(-2px); filter: brightness(1.07);">Agendar una cita</button>
+              <button type="button" onClick="{{ goSoluciones }}" style="{{ glassBtnStyle }}" style-hover="transform: translateY(-2px); background: rgba(255,255,255,0.95);">Ver soluciones</button>
+            </div>
+          </div>
+
+          <div ref="{{ heroRef }}" style="position: relative; display: flex; flex-direction: column; min-height: 0; max-height: 100%; align-self: stretch; justify-content: center; animation: u-fade 900ms cubic-bezier(.22,1,.36,1) 200ms both;">
+            <svg viewBox="0 0 620 470" role="img" aria-label="Cinco capacidades se conectan y convergen en el objetivo de su empresa." style="position: relative; width: 100%; flex: 1 1 auto; min-height: 0; max-height: 100%; height: auto; display: block;">
+              <defs><linearGradient id="heroArc" x1="70" y1="260" x2="550" y2="260" gradientUnits="userSpaceOnUse"><stop stop-color="#2864E5"></stop><stop offset="1" stop-color="#27C7D9"></stop></linearGradient></defs>
+              <g data-depth="6">
+                <path d="M70 262A240 132 0 0 1 550 262" fill="none" stroke="url(#heroArc)" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="900" style="animation: u-draw 7s cubic-bezier(.22,1,.36,1) infinite;"></path>
+                <path d="M118 268A192 106 0 0 1 502 268" fill="none" stroke="rgba(7,20,33,0.12)" stroke-width="1" stroke-dasharray="3 9"></path>
+              </g>
+              <g data-depth="10" stroke="rgba(7,20,33,0.18)" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="900">
+                <path d="M76 232 310 342" style="animation: u-draw 7s cubic-bezier(.22,1,.36,1) infinite .1s;"></path>
+                <path d="M158 160 310 342" style="animation: u-draw 7s cubic-bezier(.22,1,.36,1) infinite .22s;"></path>
+                <path d="M310 130 310 342" style="animation: u-draw 7s cubic-bezier(.22,1,.36,1) infinite .34s;"></path>
+                <path d="M462 160 310 342" style="animation: u-draw 7s cubic-bezier(.22,1,.36,1) infinite .46s;"></path>
+                <path d="M544 232 310 342" style="animation: u-draw 7s cubic-bezier(.22,1,.36,1) infinite .58s;"></path>
+              </g>
+              <g data-depth="16">
+                <sc-for list="{{ heroNodes }}" as="hn" hint-placeholder-count="5">
+                  <g role="button" tabindex="0" aria-label="{{ hn.label }}" onMouseEnter="{{ hn.enter }}" onFocus="{{ hn.enter }}" style="cursor: pointer;">
+                    <circle cx="{{ hn.cx }}" cy="{{ hn.cy }}" r="18" fill="transparent"></circle>
+                    <circle cx="{{ hn.cx }}" cy="{{ hn.cy }}" r="{{ hn.ring }}" fill="none" stroke="rgba(40,100,229,0.3)" stroke-width="1" opacity="{{ hn.ringOpacity }}"></circle>
+                    <circle cx="{{ hn.cx }}" cy="{{ hn.cy }}" r="{{ hn.r }}" fill="{{ hn.fill }}" stroke="url(#heroArc)" stroke-width="2.6" style="{{ hn.dotStyle }}"></circle>
+                  </g>
+                </sc-for>
+                <g font-family="Plus Jakarta Sans, sans-serif" font-size="13" text-anchor="middle" style="pointer-events: none;">
+                  <text x="76" y="256" style="{{ lbl0 }}">Estrategia</text>
+                  <text x="158" y="142" style="{{ lbl1 }}">Automatización</text>
+                  <text x="310" y="110" style="{{ lbl2 }}">Agentic AI</text>
+                  <text x="462" y="142" style="{{ lbl3 }}">Datos</text>
+                  <text x="544" y="256" style="{{ lbl4 }}">Desarrollo</text>
+                </g>
+              </g>
+              <g data-depth="22">
+                <g style="animation: u-orbit 24s linear infinite; transform-origin: 310px 342px;">
+                  <circle cx="310" cy="288" r="4" fill="#7467E8" opacity=".6"></circle>
+                  <circle cx="310" cy="396" r="3" fill="#27C7D9" opacity=".6"></circle>
+                </g>
+                <circle cx="310" cy="342" r="32" fill="none" stroke="rgba(40,100,229,0.24)" stroke-width="1" style="animation: u-breathe 5s ease-in-out infinite; transform-origin: 310px 342px;"></circle>
+                <circle cx="310" cy="342" r="13" fill="url(#heroArc)"></circle>
+                <text x="310" y="414" text-anchor="middle" fill="#5C6F80" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" letter-spacing="2.6">EL OBJETIVO DE SU EMPRESA</text>
+              </g>
+            </svg>
+            <div style="{{ nodeHintStyle }}">
+              <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #4F6272;">{{ nodeLabel }}</span>
+              <span style="font-size: 0.93rem; line-height: 1.45; color: #4A5C6B;">{{ nodeBody }}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isNosotros }}" hint-placeholder-val="{{ false }}">
+      <section style="{{ viewStyle }}">
+        <p style="{{ eyebrowStyle }}"><span style="width: 24px; height: 1px; background: #27C7D9;"></span>Acerca de nosotros</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(20px, 3vw, 56px); align-items: center;">
+          <div>
+            <h2 style="{{ h2Style }}">Desde Costa Rica, para las empresas de América Latina.</h2>
+            <p style="{{ leadStyle }}">AI Tech Umbrella es el socio tecnológico y estratégico que ayuda a las empresas a descubrir oportunidades, transformar sus procesos y alcanzar una mejor versión de su negocio: análisis profundo, automatización, inteligencia artificial, desarrollo digital y mejora continua.</p>
+          </div>
+          <img src="brand/visuals/nosotros.svg" alt="Capacidades conectadas sobre las organizaciones a las que acompañamos." style="display: block; width: 100%; height: auto; border-radius: 24px; box-shadow: 0 20px 48px rgba(7,20,33,0.1); border: 1px solid rgba(7,20,33,0.06);">
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; margin-top: clamp(22px, 3vh, 36px);">
+          <sc-for list="{{ compania }}" as="c" hint-placeholder-count="4">
+            <div onMouseEnter="{{ c.enter }}" onMouseLeave="{{ c.leave }}" tabindex="0" onFocus="{{ c.enter }}" onBlur="{{ c.leave }}" style="{{ c.cardStyle }}">
+              <p style="{{ labelStyle }}">{{ c.label }}</p>
+              <p style="margin: 0; font-family: 'Sora', sans-serif; font-size: 1.05rem; font-weight: 600;">{{ c.title }}</p>
+              <div style="{{ c.detailStyle }}"><p style="margin: 12px 0 0; font-size: 0.97rem; line-height: 1.6; color: #4A5C6B;">{{ c.body }}</p></div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px 32px; margin-top: clamp(22px, 3vh, 36px);">
+          <p style="{{ principleStyle }}">Comprendemos antes de construir.</p>
+          <p style="{{ principleStyle }}">El valor precede a la tecnología.</p>
+          <p style="{{ principleStyle }}">Integramos en lugar de fragmentar.</p>
+          <p style="{{ principleStyle }}">Medimos después del go-live.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: clamp(22px, 3vh, 36px);">
+          <div style="{{ glassCardStyle }}">
+            <p style="{{ labelStyle }}">Qué estamos construyendo</p>
+            <p style="{{ cardTextStyle }}">Una compañía tecnológica y estratégica de alcance internacional, capaz de combinar negocio, tecnología y pensamiento crítico para generar resultados medibles y sostenibles. Trabajamos con empresas pequeñas, medianas y corporaciones, y con equipos que necesitan digitalizar o automatizar su operación.</p>
+          </div>
+          <div style="{{ glassCardStyle }}">
+            <p style="{{ labelStyle }}">Qué rechazamos deliberadamente</p>
+            <ul style="list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 8px; font-size: 0.97rem; line-height: 1.55; color: #4A5C6B;">
+              <li style="display: grid; grid-template-columns: auto 1fr; gap: 9px;"><span style="color: #2864E5;" aria-hidden="true">→</span><span>Tecnología por moda.</span></li>
+              <li style="display: grid; grid-template-columns: auto 1fr; gap: 9px;"><span style="color: #2864E5;" aria-hidden="true">→</span><span>Programar sin cuestionar el problema.</span></li>
+              <li style="display: grid; grid-template-columns: auto 1fr; gap: 9px;"><span style="color: #2864E5;" aria-hidden="true">→</span><span>Recomendaciones desconectadas de la viabilidad.</span></li>
+              <li style="display: grid; grid-template-columns: auto 1fr; gap: 9px;"><span style="color: #2864E5;" aria-hidden="true">→</span><span>Dependencia artificial del cliente.</span></li>
+            </ul>
+          </div>
+          <div style="{{ glassCardStyle }}">
+            <p style="{{ labelStyle }}">El ecosistema</p>
+            <p style="{{ cardTextStyle }}">Bajo la sombrilla conviven dos formas de crear valor: soluciones propias —Cartera+ y AuraCare— y capacidades que trabajamos con su organización, más los servicios de acompañamiento como Financial Glow Up.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px;">
+              <button type="button" onClick="{{ goSoluciones }}" style="{{ chipBtnStyle }}" style-hover="color: #2864E5;">Ver soluciones</button>
+              <button type="button" onClick="{{ goServicios }}" style="{{ chipBtnStyle }}" style-hover="color: #2864E5;">Ver servicios</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isMetodo }}" hint-placeholder-val="{{ false }}">
+      <section style="{{ viewStyle }}">
+        <p style="{{ eyebrowStyle }}"><span style="width: 24px; height: 1px; background: #27C7D9;"></span>Cómo trabajamos</p>
+        <h2 style="{{ h2Style }}">Primero entendemos. Luego construimos.</h2>
+        <p style="{{ leadStyle }}">Pase el cursor sobre cada etapa para ver qué ocurre en ella. Avanzamos con velocidad responsable: entender suficiente, decidir con evidencia, construir con gobierno, transferir capacidad y medir antes de declarar éxito.</p>
+        <ol style="list-style: none; margin: clamp(22px, 3vh, 38px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(186px, 1fr)); gap: 14px;">
+          <sc-for list="{{ pasos }}" as="p" hint-placeholder-count="5">
+            <li onMouseEnter="{{ p.enter }}" onMouseLeave="{{ p.leave }}" tabindex="0" onFocus="{{ p.enter }}" onBlur="{{ p.leave }}" style="{{ p.cardStyle }}">
+              <span style="{{ p.numStyle }}">{{ p.num }}</span>
+              <h3 style="font-family: 'Sora', sans-serif; font-size: 1.18rem; font-weight: 600; letter-spacing: -0.015em; margin: 12px 0 0;">{{ p.title }}</h3>
+              <div style="{{ p.detailStyle }}">
+                <p style="margin: 12px 0 0; font-size: 0.95rem; line-height: 1.6; color: #4A5C6B;">{{ p.body }}</p>
+                <div role="img" aria-hidden="true" style="{{ p.shot }}"></div>
+              </div>
+            </li>
+          </sc-for>
+        </ol>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 16px; margin-top: clamp(20px, 3vh, 34px);">
+          <div style="{{ glassCardStyle }}"><p style="{{ labelStyle }}">Diagnóstico antes que desarrollo</p><p style="{{ cardTextStyle }}">Analizamos procesos, herramientas, información y fricciones antes de construir, para no resolver síntomas.</p></div>
+          <div style="{{ glassCardStyle }}"><p style="{{ labelStyle }}">Capacidades conectadas</p><p style="{{ cardTextStyle }}">Automation, Intelligence, Agents, Data, Digital y Development se combinan según la oportunidad; el catálogo no decide la solución.</p></div>
+          <div style="{{ glassCardStyle }}"><p style="{{ labelStyle }}">Resultados medibles</p><p style="{{ cardTextStyle }}">Cada proyecto define qué se busca mejorar: tiempo, errores, costos, productividad, conversión o experiencia.</p></div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isSoluciones }}" hint-placeholder-val="{{ false }}">
+      <section style="{{ viewStyle }}">
+        <p style="{{ eyebrowStyle }}"><span style="width: 24px; height: 1px; background: #27C7D9;"></span>Soluciones</p>
+        <h2 style="{{ h2Style }}">Soluciones creadas bajo Umbrella.</h2>
+        <p style="{{ leadStyle }}">Productos propios que nacen de necesidades concretas y evolucionan con quienes los usan. Cada uno tiene su propio sitio dentro del ecosistema.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; margin-top: clamp(22px, 3vh, 38px);">
+          <article onMouseEnter="{{ enterCartera }}" onMouseLeave="{{ leaveCartera }}" style="{{ carteraCardStyle }}">
+            <div style="display: grid; place-items: center; aspect-ratio: 8 / 5; border-radius: 18px; background: linear-gradient(150deg, #F2F8F4 0%, #FFFFFF 100%); border: 1px solid rgba(30,122,75,0.14);">
+              <img src="brand/cartera-plus-icon.png" alt="Cartera+" style="width: clamp(72px, 26%, 104px); height: auto; filter: drop-shadow(0 12px 26px rgba(30,122,75,0.18));">
+            </div>
+            <p style="{{ labelStyle }}; margin-top: 20px;">Finanzas personales</p>
+            <h3 style="margin: 0;"><img src="brand/cartera-plus-wordmark.png" alt="Cartera+" style="display: block; height: clamp(24px, 3vw, 32px); width: auto; max-width: 100%;"></h3>
+            <p style="margin: 10px 0 0; font-family: 'Sora', sans-serif; font-size: 1.02rem; font-weight: 500;">Finanzas personales con dirección.</p>
+            <div style="{{ carteraDetailStyle }}">
+              <p style="margin: 12px 0 0; font-size: 0.97rem; line-height: 1.65; color: #4A5C6B;">Una plataforma creada para ayudar a las personas a comprender mejor su dinero —ingresos, gastos, deudas y metas— y avanzar hacia decisiones más conscientes, con acompañamiento y no solo con registros.</p>
+            </div>
+            <a href="https://carteraplus.aitechumbrella.com" target="_blank" rel="noopener" style="{{ solLinkStyle }}" style-hover="gap: 14px;">carteraplus.aitechumbrella.com <span aria-hidden="true">→</span></a>
+          </article>
+          <article onMouseEnter="{{ enterAura }}" onMouseLeave="{{ leaveAura }}" style="{{ auraCardStyle }}">
+            <div style="display: grid; place-items: center; aspect-ratio: 8 / 5; border-radius: 18px; background: linear-gradient(150deg, #F1F8F9 0%, #FFFFFF 100%); border: 1px solid rgba(14,124,138,0.16);">
+              <img src="brand/auracare/svg/auracare-symbol-color.svg" alt="AuraCare" style="width: clamp(66px, 24%, 96px); height: auto; filter: drop-shadow(0 12px 26px rgba(14,124,138,0.22));">
+            </div>
+            <p style="{{ labelStyle }}; margin-top: 20px;">Operación clínica y odontológica</p>
+            <h3 style="display: flex; align-items: center; gap: 12px; margin: 0;">
+              <svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true" style="flex: 0 0 auto;">
+                <defs><linearGradient id="auraD" x1="6" y1="6" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#0E7C8A"></stop><stop offset="1" stop-color="#4FD1C5"></stop></linearGradient></defs>
+                <g fill="url(#auraD)" style="animation: a-petal 6s ease-in-out infinite; transform-origin: 20px 20px;">
+                  <path d="M20 6a10 10 0 0 1 10 10A10 10 0 0 1 20 6Z"></path>
+                  <path d="M34 20a10 10 0 0 1-10 10 10 10 0 0 1 10-10Z"></path>
+                  <path d="M20 34a10 10 0 0 1-10-10 10 10 0 0 1 10 10Z"></path>
+                  <path d="M6 20a10 10 0 0 1 10-10A10 10 0 0 1 6 20Z"></path>
+                </g>
+                <circle cx="20" cy="20" r="3.2" fill="#071421"></circle>
+              </svg>
+              <span style="font-family: 'Sora', sans-serif; font-size: clamp(1.45rem, 2.2vw, 1.9rem); line-height: 1.08; letter-spacing: -0.03em; font-weight: 700;">AuraCare</span>
+            </h3>
+            <p style="margin: 10px 0 0; font-family: 'Sora', sans-serif; font-size: 1.02rem; font-weight: 500;">Tecnología diseñada alrededor de la operación clínica.</p>
+            <div style="{{ auraDetailStyle }}">
+              <p style="margin: 12px 0 0; font-size: 0.97rem; line-height: 1.65; color: #4A5C6B;">Una solución digital orientada a conectar y evolucionar la gestión de operaciones clínicas y odontológicas: que la información, la agenda y el trabajo del equipo dejen de vivir en herramientas separadas.</p>
+            </div>
+            <a href="https://auracare.aitechumbrella.com" target="_blank" rel="noopener" style="{{ solLinkStyle }}" style-hover="gap: 14px;">auracare.aitechumbrella.com <span aria-hidden="true">→</span></a>
+          </article>
+          <article onMouseEnter="{{ enterFgu }}" onMouseLeave="{{ leaveFgu }}" style="{{ fguCardStyle }}">
+            <div style="aspect-ratio: 8 / 5; border-radius: 18px; border: 1px solid rgba(40,100,229,0.14); background-image: url('brand/visuals/fgu.svg'); background-size: cover; background-position: center;"></div>
+            <p style="{{ labelStyle }}; margin-top: 20px;">Educación y mentoría financiera</p>
+            <h3 style="font-family: 'Sora', sans-serif; font-size: clamp(1.45rem, 2.2vw, 1.9rem); line-height: 1.08; letter-spacing: -0.03em; font-weight: 700; margin: 0;">Financial Glow Up</h3>
+            <p style="margin: 10px 0 0; font-family: 'Sora', sans-serif; font-size: 1.02rem; font-weight: 500;">Conocimiento financiero convertido en capacidad.</p>
+            <div style="{{ fguDetailStyle }}">
+              <p style="margin: 12px 0 0; font-size: 0.97rem; line-height: 1.65; color: #4A5C6B;">Programa de educación, asesoría y mentoría financiera: entender la situación real, ordenar prioridades, decidir con criterio y sostener el hábito. Combina contenido, acompañamiento humano y seguimiento; no es únicamente software.</p>
+              <ul style="list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 7px; font-size: 0.9rem; color: #4A5C6B;">
+                <li style="display: grid; grid-template-columns: auto 1fr; gap: 9px;"><span style="color: #2864E5;" aria-hidden="true">→</span><span>Diagnóstico financiero y prioridades reales</span></li>
+                <li style="display: grid; grid-template-columns: auto 1fr; gap: 9px;"><span style="color: #2864E5;" aria-hidden="true">→</span><span>Mentoría uno a uno y sesiones de seguimiento</span></li>
+                <li style="display: grid; grid-template-columns: auto 1fr; gap: 9px;"><span style="color: #2864E5;" aria-hidden="true">→</span><span>Educación aplicada a decisiones concretas</span></li>
+              </ul>
+            </div>
+            <a href="https://financialglowup.aitechumbrella.com" target="_blank" rel="noopener" style="{{ solLinkStyle }}" style-hover="gap: 14px;">financialglowup.aitechumbrella.com <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+        <div style="{{ glassCardStyle }}; margin-top: clamp(20px, 3vh, 34px);">
+          <p style="{{ labelStyle }}">Su relación con la compañía</p>
+          <p style="{{ cardTextStyle }}">Creamos soluciones propias cuando encontramos oportunidades que merecen convertirse en capacidades repetibles. Cada producto conserva su identidad y hereda los estándares de calidad, evidencia, privacidad y acompañamiento de la sombrilla.</p>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isServicios }}" hint-placeholder-val="{{ false }}">
+      <section style="{{ viewStyle }}">
+        <p style="{{ eyebrowStyle }}"><span style="width: 24px; height: 1px; background: #27C7D9;"></span>Servicios</p>
+        <h2 style="{{ h2Style }}">Acompañamiento que se queda hasta que el resultado ocurre.</h2>
+        <p style="{{ leadStyle }}">Capacidades que trabajamos <strong style="font-weight: 600; color: #071421;">con su organización</strong>: entender, diseñar, construir, integrar y sostener. Pase el cursor sobre cada servicio para ver qué incluye. Si busca una solución ya creada por nosotros, está en <button type="button" onClick="{{ goSoluciones }}" style="{{ inlineLinkStyle }}" style-hover="color: #27C7D9;">Soluciones</button>.</p>
+        <article style="{{ servHeroStyle }}">
+          <div>
+            <p style="{{ labelStyle }}">Cómo empieza el trabajo</p>
+            <h3 style="font-family: 'Sora', sans-serif; font-size: clamp(1.35rem, 2.1vw, 1.8rem); line-height: 1.14; letter-spacing: -0.025em; font-weight: 600; margin: 0;">Empezamos por la oportunidad, con un alcance proporcional al riesgo.</h3>
+            <p style="margin: 14px 0 0; font-size: 1rem; line-height: 1.68; color: #4A5C6B;">Podemos comenzar con una conversación de descubrimiento, profundizar mediante diagnóstico cuando la incertidumbre lo requiere y definir una intervención proporcional al valor, riesgo y complejidad del problema. Usted no necesita llegar con un alcance técnico.</p>
+            <button type="button" onClick="{{ goContacto }}" style="{{ chipBtnStyle }}; margin-top: 20px;" style-hover="color: #2864E5;">Cuéntenos qué necesita mejorar</button>
+          </div>
+          <div style="display: grid; gap: 12px;">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,0.72); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8);">
+              <span style="font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #2864E5;">01</span>
+              <span><strong style="font-family: 'Sora', sans-serif; font-size: 1rem; font-weight: 600;">Conversación de descubrimiento</strong><br><span style="font-size: 0.95rem; line-height: 1.55; color: #4A5C6B;">Sin costo y sin compromiso: entendemos el contexto y decidimos juntos si hay una oportunidad que merezca trabajarse.</span></span>
+            </div>
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,0.72); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8);">
+              <span style="font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #2864E5;">02</span>
+              <span><strong style="font-family: 'Sora', sans-serif; font-size: 1rem; font-weight: 600;">Diagnóstico</strong><br><span style="font-size: 0.95rem; line-height: 1.55; color: #4A5C6B;">Cuando la incertidumbre es alta: proceso real, información disponible, sistemas y prioridades por impacto.</span></span>
+            </div>
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,0.72); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8);">
+              <span style="font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #2864E5;">03</span>
+              <span><strong style="font-family: 'Sora', sans-serif; font-size: 1rem; font-weight: 600;">Intervención</strong><br><span style="font-size: 0.95rem; line-height: 1.55; color: #4A5C6B;">Proyecto con alcance, etapas y gobierno definidos, combinando las capacidades que la oportunidad requiera.</span></span>
+            </div>
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,0.72); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.8);">
+              <span style="font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #2864E5;">04</span>
+              <span><strong style="font-family: 'Sora', sans-serif; font-size: 1rem; font-weight: 600;">Acompañamiento continuo</strong><br><span style="font-size: 0.95rem; line-height: 1.55; color: #4A5C6B;">Medición después del go-live, evolución de la solución y decisión de qué merece mejorar después.</span></span>
+            </div>
+          </div>
+        </article>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 18px;">
+          <sc-for list="{{ servicios }}" as="s" hint-placeholder-count="6">
+            <div onMouseEnter="{{ s.enter }}" onMouseLeave="{{ s.leave }}" tabindex="0" onFocus="{{ s.enter }}" onBlur="{{ s.leave }}" style="{{ s.cardStyle }}">
+              <h3 style="font-family: 'Sora', sans-serif; font-size: 1.12rem; font-weight: 600; letter-spacing: -0.015em; margin: 0;">{{ s.title }}</h3>
+              <div style="{{ s.detailStyle }}">
+                <p style="margin: 12px 0 0; font-size: 0.95rem; line-height: 1.6; color: #4A5C6B;">{{ s.body }}</p>
+                <ul style="list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 7px; font-size: 0.9rem; color: #4A5C6B;">
+                  <sc-for list="{{ s.items }}" as="it" hint-placeholder-count="4">
+                    <li style="display: grid; grid-template-columns: auto 1fr; gap: 9px;"><span style="color: #2864E5;" aria-hidden="true">→</span><span>{{ it }}</span></li>
+                  </sc-for>
+                </ul>
+                <div role="img" aria-hidden="true" style="{{ s.shot }}"></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isContacto }}" hint-placeholder-val="{{ false }}">
+      <section style="{{ viewStyle }}">
+        <p style="{{ eyebrowStyle }}"><span style="width: 24px; height: 1px; background: #27C7D9;"></span>Contacto</p>
+        <h2 style="{{ h2Style }}">Empecemos por la oportunidad.</h2>
+        <p style="{{ leadStyle }}">No necesita llegar con un alcance técnico. Cuéntenos qué quiere mejorar, construir o entender y agendamos el espacio.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(288px, 1fr)); gap: 18px; margin-top: clamp(20px, 3vh, 34px); align-items: start;">
+          <div style="display: grid; gap: 14px;">
+            <a href="mailto:communication@AITechUmbrella.com" style="{{ contactTileStyle }}" style-hover="transform: translateY(-3px);">
+              <span style="{{ labelStyle }}">Correo corporativo</span>
+              <span style="font-family: 'Sora', sans-serif; font-size: clamp(1rem, 1.4vw, 1.18rem); font-weight: 600; color: #2864E5; word-break: break-word;">communication@AITechUmbrella.com</span>
+            </a>
+            <a href="tel:+50664290000" style="{{ contactTileStyle }}" style-hover="transform: translateY(-3px);">
+              <span style="{{ labelStyle }}">Costa Rica</span>
+              <span style="display: flex; align-items: center; gap: 11px;">
+                <svg width="26" height="18" viewBox="0 0 26 18" aria-hidden="true" style="flex: 0 0 auto; border-radius: 3px; box-shadow: 0 0 0 1px rgba(7,20,33,0.1);">
+                  <rect width="26" height="18" fill="#0B4EA2"></rect><rect y="3" width="26" height="12" fill="#FFFFFF"></rect><rect y="6" width="26" height="6" fill="#CE1126"></rect>
+                </svg>
+                <span style="font-family: 'Sora', sans-serif; font-size: clamp(1rem, 1.4vw, 1.18rem); font-weight: 600; color: #2864E5;">+506 6429 0000</span>
+              </span>
+            </a>
+            <a href="tel:+13057288656" style="{{ contactTileStyle }}" style-hover="transform: translateY(-3px);">
+              <span style="{{ labelStyle }}">Estados Unidos</span>
+              <span style="display: flex; align-items: center; gap: 11px;">
+                <svg width="26" height="18" viewBox="0 0 26 18" aria-hidden="true" style="flex: 0 0 auto; border-radius: 3px; box-shadow: 0 0 0 1px rgba(7,20,33,0.1);">
+                  <rect width="26" height="18" fill="#FFFFFF"></rect>
+                  <g fill="#B22234"><rect width="26" height="2"></rect><rect y="4" width="26" height="2"></rect><rect y="8" width="26" height="2"></rect><rect y="12" width="26" height="2"></rect><rect y="16" width="26" height="2"></rect></g>
+                  <rect width="11" height="10" fill="#3C3B6E"></rect>
+                  <g fill="#FFFFFF"><circle cx="2.4" cy="2.2" r="0.8"></circle><circle cx="5.5" cy="2.2" r="0.8"></circle><circle cx="8.6" cy="2.2" r="0.8"></circle><circle cx="4" cy="5" r="0.8"></circle><circle cx="7" cy="5" r="0.8"></circle><circle cx="2.4" cy="7.8" r="0.8"></circle><circle cx="5.5" cy="7.8" r="0.8"></circle><circle cx="8.6" cy="7.8" r="0.8"></circle></g>
+                </svg>
+                <span style="font-family: 'Sora', sans-serif; font-size: clamp(1rem, 1.4vw, 1.18rem); font-weight: 600; color: #2864E5;">+1 (305) 728-8656</span>
+              </span>
+            </a>
+            <div style="{{ glassCardStyle }}">
+              <p style="{{ labelStyle }}">Ubicación</p>
+              <p style="{{ cardTextStyle }}">San José, Costa Rica · Atención en toda América Latina.<br>AI Tech Umbrella LLC — Florida, EE. UU.</p>
+            </div>
+          </div>
+
+          <form onSubmit="{{ submit }}" style="{{ formStyle }}">
+            <p style="{{ labelStyle }}">Agendar una cita</p>
+            <label style="{{ fieldLabelStyle }}">Nombre
+              <input type="text" ref="{{ refNombre }}" placeholder="Su nombre" style="{{ inputStyle }}" style-focus="box-shadow: inset 3px 3px 8px rgba(7,20,33,0.07), inset -3px -3px 8px rgba(255,255,255,0.95), 0 0 0 2px rgba(40,100,229,0.4);">
+            </label>
+            <label style="{{ fieldLabelStyle }}">Correo
+              <input type="email" ref="{{ refCorreo }}" placeholder="nombre@empresa.com" style="{{ inputStyle }}" style-focus="box-shadow: inset 3px 3px 8px rgba(7,20,33,0.07), inset -3px -3px 8px rgba(255,255,255,0.95), 0 0 0 2px rgba(40,100,229,0.4);">
+            </label>
+            <label style="{{ fieldLabelStyle }}">Asunto
+              <input type="text" ref="{{ refAsunto }}" placeholder="Ej.: Automatizar reportes de operación" style="{{ inputStyle }}" style-focus="box-shadow: inset 3px 3px 8px rgba(7,20,33,0.07), inset -3px -3px 8px rgba(255,255,255,0.95), 0 0 0 2px rgba(40,100,229,0.4);">
+            </label>
+            <label style="{{ fieldLabelStyle }}">Mensaje
+              <textarea ref="{{ refMensaje }}" rows="4" placeholder="¿Qué le gustaría mejorar, construir o entender?" style="{{ textareaStyle }}" style-focus="box-shadow: inset 3px 3px 8px rgba(7,20,33,0.07), inset -3px -3px 8px rgba(255,255,255,0.95), 0 0 0 2px rgba(40,100,229,0.4);"></textarea>
+            </label>
+            <p style="{{ msgStyle }}" role="status">{{ formMsg }}</p>
+            <button type="submit" style="{{ ctaStyle }}" style-hover="transform: translateY(-2px); filter: brightness(1.07);">Enviar solicitud</button>
+            <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: #4F6272;">Su solicitud se envía a communication@AITechUmbrella.com y se usa únicamente para responderle y coordinar la conversación.</p>
+          </form>
+        </div>
+      </section>
+    </sc-if>
+
+  </main>
+
+  <div aria-hidden="true" style="position: relative; z-index: 15; flex: 0 0 auto; overflow: hidden; background: rgba(255,255,255,0.6); backdrop-filter: blur(16px); border-top: 1px solid rgba(7,20,33,0.06);">
+    <div style="display: flex; width: max-content; align-items: center; padding: 9px 0; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C6F80; white-space: nowrap; animation: u-marquee 46s linear infinite;">
+      <sc-for list="{{ ticker }}" as="t" hint-placeholder-count="21">
+        <span style="{{ t.style }}">{{ t.text }}</span>
+      </sc-for>
+    </div>
+  </div>
+
+  <footer style="position: relative; z-index: 15; flex: 0 0 auto; background: rgba(255,255,255,0.7); backdrop-filter: blur(18px); border-top: 1px solid rgba(7,20,33,0.06);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 11px 24px; display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center; font-size: 12px; color: #5C6F80;">
+      <span>© 2026 AI Tech Umbrella LLC</span>
+      <span>San José, Costa Rica · Florida, EE. UU.</span>
+      <a href="mailto:communication@AITechUmbrella.com" style="color: #5C6F80;" style-hover="color: #2864E5;">communication@AITechUmbrella.com</a>
+      <span style="display: flex; align-items: center; gap: 14px; margin-left: auto;">
+        <a href="tel:+50664290000" style="color: #5C6F80;" style-hover="color: #2864E5;">CR +506 6429 0000</a>
+        <a href="tel:+13057288656" style="color: #5C6F80;" style-hover="color: #2864E5;">US +1 (305) 728-8656</a>
+      </span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ctaVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Degradado azul → cian&quot;,&quot;Azul sólido&quot;],&quot;default&quot;:&quot;Degradado azul → cian&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;}}">
+class Component extends DCLogic {
+  state = { view: "home", msg: "", hover: "", node: 2 };
+
+  constructor(props) {
+    super(props);
+    this.refNombre = React.createRef();
+    this.refCorreo = React.createRef();
+    this.refAsunto = React.createRef();
+    this.refMensaje = React.createRef();
+    this.heroRef = React.createRef();
+    this.onMove = this.onMove.bind(this);
+  }
+
+  componentDidMount() {
+    this.reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!this.reduce) window.addEventListener("mousemove", this.onMove, { passive: true });
+  }
+
+  componentWillUnmount() { window.removeEventListener("mousemove", this.onMove); }
+
+  onMove(e) {
+    const host = this.heroRef.current;
+    if (!host) return;
+    const r = host.getBoundingClientRect();
+    if (!r.width) return;
+    const nx = (e.clientX - (r.left + r.width / 2)) / r.width;
+    const ny = (e.clientY - (r.top + r.height / 2)) / r.height;
+    host.querySelectorAll("[data-depth]").forEach((g) => {
+      const d = parseFloat(g.getAttribute("data-depth")) || 0;
+      g.style.transform = "translate(" + (nx * d).toFixed(2) + "px," + (ny * d * 0.6).toFixed(2) + "px)";
+      g.style.transition = "transform 420ms cubic-bezier(.22,1,.36,1)";
+    });
+  }
+
+  lblStyle(i, ease) {
+    const on = i === this.state.node;
+    return "fill: " + (on ? "#071421" : "#5C6F80") + "; font-weight: " + (on ? "600" : "500") + "; transition: fill 280ms " + ease + ";";
+  }
+
+  go(view) { this.setState({ view: view, msg: "", hover: "" }); }
+  hov(key) { return { enter: () => this.setState({ hover: key }), leave: () => this.setState({ hover: "" }) }; }
+
+  submit(e) {
+    e.preventDefault();
+    const v = (r) => (r.current && r.current.value ? r.current.value.trim() : "");
+    const nombre = v(this.refNombre), correo = v(this.refCorreo), asunto = v(this.refAsunto), mensaje = v(this.refMensaje);
+    if (!correo || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) { this.setState({ msg: "Indique un correo válido para poder responderle." }); return; }
+    if (!mensaje) { this.setState({ msg: "Cuéntenos brevemente qué necesita mejorar." }); return; }
+    const subject = asunto || "Solicitud de conversación · AI Tech Umbrella";
+    const body = "Nombre: " + (nombre || "(sin indicar)") + "\nCorreo: " + correo + "\n\n" + mensaje;
+    window.location.href = "mailto:communication@AITechUmbrella.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    this.setState({ msg: "Abrimos su correo con la solicitud lista para enviar a communication@AITechUmbrella.com." });
+  }
+
+  renderVals() {
+    const ease = "cubic-bezier(.22,1,.36,1)";
+    const view = this.state.view, hov = this.state.hover;
+    const grad = (this.props.ctaVariant ?? "Degradado azul → cian") === "Degradado azul → cian";
+    const bg = grad ? "linear-gradient(100deg, #2864E5 0%, #2470DF 55%, #27C7D9 100%)" : "#2864E5";
+    const neu = "background: rgba(255,255,255,0.92); border-radius: 20px; padding: 22px; box-shadow: 8px 8px 22px rgba(7,20,33,0.06), -6px -6px 18px rgba(255,255,255,0.95), inset 0 0 0 1px rgba(7,20,33,0.04);";
+    const glass = "background: rgba(255,255,255,0.6); backdrop-filter: blur(20px) saturate(1.3); border-radius: 22px; padding: 22px; box-shadow: 0 16px 40px rgba(7,20,33,0.08), inset 0 0 0 1px rgba(255,255,255,0.8);";
+    const lift = (on) => " cursor: default; outline: none; transform: " + (on ? "translateY(-5px)" : "none") + "; box-shadow: " + (on ? "14px 18px 40px rgba(40,100,229,0.16), -6px -6px 18px rgba(255,255,255,0.95), inset 0 0 0 1px rgba(40,100,229,0.2)" : "8px 8px 22px rgba(7,20,33,0.06), -6px -6px 18px rgba(255,255,255,0.95), inset 0 0 0 1px rgba(7,20,33,0.04)") + "; transition: transform 340ms " + ease + ", box-shadow 340ms " + ease + ";";
+    const detail = (on) => "overflow: hidden; max-height: " + (on ? "520px" : "0px") + "; opacity: " + (on ? "1" : "0") + "; transition: max-height 460ms " + ease + ", opacity 320ms " + ease + ";";
+    const shot = (src) => "display: block; width: 100%; aspect-ratio: 8 / 5; margin-top: 14px; border-radius: 12px; border: 1px solid rgba(7,20,33,0.07); background-image: url('" + src + "'); background-size: cover; background-position: center;";
+    const labelStyle = "margin: 0 0 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #4F6272;";
+
+    const navItems = [
+      { id: "nosotros", label: "Nosotros" },
+      { id: "metodo", label: "Cómo trabajamos" },
+      { id: "soluciones", label: "Soluciones" },
+      { id: "servicios", label: "Servicios" }
+    ];
+    const nodes = [
+      { label: "Estrategia", cx: 76, cy: 232, ty: 256, body: "Entendemos el negocio y decidimos dónde intervenir antes de escoger una tecnología." },
+      { label: "Automatización", cx: 158, cy: 160, ty: 142, body: "Quitamos el trabajo repetitivo del camino y liberamos capacidad del equipo." },
+      { label: "Agentic AI", cx: 310, cy: 130, ty: 110, body: "Agentes que ejecutan tareas de principio a fin, con límites claros y supervisión humana." },
+      { label: "Datos", cx: 462, cy: 160, ty: 142, body: "Información conectada y confiable para que las decisiones dejen de depender de la intuición." },
+      { label: "Desarrollo", cx: 544, cy: 232, ty: 256, body: "Software e integraciones cuando la capacidad que el negocio necesita merece ser propia." }
+    ];
+    const pasos = [
+      { num: "01", title: "Discover", img: "brand/visuals/discover.svg", body: "Entrevistas, recorrido del proceso real y revisión de la información disponible. Salimos con la oportunidad delimitada y el costo de no actuar." },
+      { num: "02", title: "Design", img: "brand/visuals/design.svg", body: "Definimos la intervención, sus límites y alternativas: qué se construye, qué no, y cómo se crea valor de forma responsable." },
+      { num: "03", title: "Deliver", img: "brand/visuals/deliver.svg", body: "Construimos e integramos por capas, con visibilidad permanente sobre decisiones, cambios y riesgos." },
+      { num: "04", title: "Demonstrate", img: "brand/visuals/demonstrate.svg", body: "Transferimos la capacidad al equipo y medimos: evidencia de que la solución genera el valor esperado." },
+      { num: "05", title: "Evolve", img: "brand/visuals/evolve.svg", body: "Convertimos resultados y aprendizaje en la siguiente mejor decisión, con alcance proporcional al valor." }
+    ];
+    const compania = [
+      { label: "Razón social", title: "AI Tech Umbrella LLC", body: "Limited Liability Company constituida en Florida, EE. UU. Oficina principal: 2 S Biscayne Boulevard, Ste 3200 #7206, Miami, Florida 33131." },
+      { label: "Operación", title: "San José, Costa Rica", body: "Nuestro equipo trabaja desde Costa Rica y atiende clientes en toda América Latina, en español y en su contexto operativo." },
+      { label: "Propósito", title: "Capacidades, no herramientas", body: "Transformar tecnología, información y conocimiento en capacidades que permitan trabajar mejor, decidir con claridad, crecer y evolucionar." },
+      { label: "Dirección de la compañía", title: "Tres socios fundadores", body: "Gustavo Adolfo Sáenz Herrera · Guillermo Andrés Rivera Guzmán · David Johan Castro Fernández." }
+    ];
+    const servicios = [
+      { title: "Acompañamiento de proyectos", img: "brand/visuals/acompanamiento.svg",
+        body: "Para proyectos personales y de empresa que ya arrancaron o que no logran arrancar: definimos alcance y etapas, sostenemos el ritmo de avance y decidimos qué cambia en el camino.",
+        items: ["Alcance, etapas y responsables", "Reuniones de avance y decisiones registradas", "Gestión de riesgos y cambios", "Cierre con transferencia al equipo"] },
+      { title: "Consultoría y diagnóstico", img: "brand/visuals/consultoria.svg",
+        body: "Antes de invertir en tecnología, entendemos dónde está el mayor impacto: recorremos el proceso real, revisamos herramientas e información y priorizamos por valor.",
+        items: ["Mapa del proceso actual y fricciones", "Inventario de sistemas e información", "Casos de mayor impacto priorizados", "Hoja de ruta con esfuerzo y valor estimados"] },
+      { title: "Umbrella Automation", img: "brand/visuals/automation.svg",
+        body: "Quitamos del camino el trabajo repetitivo: flujos entre sistemas, tareas administrativas, reportes y notificaciones que hoy alguien hace a mano.",
+        items: ["Automatización de flujos entre sistemas", "Reportes y notificaciones automáticas", "Conciliaciones y cargas de datos", "Formularios y trámites internos"] },
+      { title: "Umbrella Agents", img: "brand/visuals/agents.svg",
+        body: "Agentes de IA que ejecutan trabajo de principio a fin dentro de un alcance definido, con criterios de decisión explícitos, trazabilidad y supervisión humana.",
+        items: ["Agentes de atención y seguimiento", "Agentes de operación e integración", "Copilotos internos sobre su información", "Límites, aprobaciones y auditoría"] },
+      { title: "Umbrella Data", img: "brand/visuals/data.svg",
+        body: "Convertimos información dispersa en una base útil para operar y decidir: integración, limpieza, indicadores y tableros que la gente sí usa.",
+        items: ["Integración y limpieza de fuentes", "Indicadores y definiciones acordadas", "Tableros operativos y de dirección", "Modelos de análisis y predicción"] },
+      { title: "Umbrella Digital & Development", img: "brand/visuals/digital.svg",
+        body: "Diseñamos y construimos el producto digital cuando la capacidad merece ser propia: del sitio corporativo a la aplicación a la medida.",
+        items: ["Páginas y sitios corporativos", "Aplicaciones web y móviles a la medida", "Integraciones y APIs", "Portales de cliente y plataformas internas"] }
+    ];
+
+    const n = nodes[Math.min(this.state.node, nodes.length - 1)];
+    const caps = ["Umbrella Automation", "Umbrella Intelligence", "Umbrella Agents", "Umbrella Data", "Umbrella Digital", "Umbrella Development", "Agentic AI"];
+    const ticker = [];
+    for (let c = 0; c < 3; c++) caps.forEach((t) => {
+      ticker.push({ text: t, style: "white-space: nowrap; margin-right: 32px;" });
+      ticker.push({ text: "·", style: "color: #27C7D9; margin-right: 32px;" });
+    });
+
+    return {
+      isHome: view === "home", isNosotros: view === "nosotros", isMetodo: view === "metodo",
+      isSoluciones: view === "soluciones", isServicios: view === "servicios", isContacto: view === "contacto",
+      goHome: () => this.go("home"), goContacto: () => this.go("contacto"), goSoluciones: () => this.go("soluciones"), goServicios: () => this.go("servicios"),
+      inlineLinkStyle: "border: 0; background: none; padding: 0; font-family: inherit; font-size: inherit; font-weight: 600; color: #2864E5; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; transition: color 200ms " + ease + ";",
+      chipBtnStyle: "padding: 11px 18px; border: 0; border-radius: 999px; background: #FFFFFF; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13.5px; font-weight: 600; color: #071421; cursor: pointer; min-height: 44px; box-shadow: 5px 5px 14px rgba(7,20,33,0.08), -4px -4px 12px rgba(255,255,255,0.95); transition: color 240ms " + ease + ";",
+      submit: (e) => this.submit(e),
+      refNombre: this.refNombre, refCorreo: this.refCorreo, refAsunto: this.refAsunto, refMensaje: this.refMensaje,
+      heroRef: this.heroRef,
+      ticker: ticker,
+      formMsg: this.state.msg,
+      msgStyle: "margin: 0; min-height: 18px; font-size: 13px; line-height: 1.5; color: " + (this.state.msg.indexOf("Abrimos") === 0 ? "#0E6E7A" : "#B23A0B") + ";",
+      nav: navItems.map((it) => ({
+        label: it.label, go: () => this.go(it.id), current: view === it.id ? "page" : "false",
+        style: "padding: 9px 11px; border: 0; border-radius: 999px; white-space: nowrap; font-size: 13px; font-weight: " + (view === it.id ? "600" : "500") + "; cursor: pointer; min-height: 44px; color: " + (view === it.id ? "#071421" : "#4A5C6B") + "; background: " + (view === it.id ? "rgba(255,255,255,0.9)" : "transparent") + "; box-shadow: " + (view === it.id ? "5px 5px 14px rgba(7,20,33,0.07), -4px -4px 12px rgba(255,255,255,0.95), inset 0 0 0 1px rgba(40,100,229,0.16)" : "none") + "; transition: background 240ms " + ease + ", color 240ms " + ease + ", box-shadow 240ms " + ease + ";"
+      })),
+      heroNodes: nodes.map((nd, i) => {
+        const on = i === this.state.node;
+        return {
+          label: nd.label, cx: nd.cx, cy: nd.cy, ty: nd.ty,
+          r: on ? (i === 2 ? 9.5 : 8) : (i === 2 ? 8 : 6.5),
+          ring: on ? 17 : 13, ringOpacity: on ? 1 : 0,
+          fill: on ? "#2864E5" : "#FFFFFF",
+          textFill: on ? "#071421" : "#5C6F80",
+          weight: on ? "600" : "500",
+          enter: () => this.setState({ node: i }),
+          dotStyle: "transition: r 300ms " + ease + ", fill 300ms " + ease + "; animation: u-pop 7s ease-in-out infinite " + (0.6 + i * 0.14) + "s; transform-origin: " + nd.cx + "px " + nd.cy + "px;"
+        };
+      }),
+      lbl0: this.lblStyle(0, ease), lbl1: this.lblStyle(1, ease), lbl2: this.lblStyle(2, ease), lbl3: this.lblStyle(3, ease), lbl4: this.lblStyle(4, ease),
+      nodeLabel: n.label, nodeBody: n.body,
+      nodeHintStyle: "flex: 0 0 auto; margin-top: 8px; display: grid; gap: 3px; padding: 11px 14px; border-radius: 14px; background: rgba(255,255,255,0.66); backdrop-filter: blur(18px) saturate(1.3); box-shadow: 0 12px 28px rgba(7,20,33,0.08), inset 0 0 0 1px rgba(255,255,255,0.8); animation: u-in 460ms " + ease + " both;",
+      pasos: pasos.map((p, i) => {
+        const k = "paso" + i, on = hov === k, h = this.hov(k);
+        return { num: p.num, title: p.title, body: p.body, shot: shot(p.img), enter: h.enter, leave: h.leave,
+          numStyle: "display: block; font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; color: " + (on ? "#2864E5" : "#5C6F80") + "; transition: color 260ms " + ease + ";",
+          cardStyle: neu + lift(on), detailStyle: detail(on) };
+      }),
+      compania: compania.map((c, i) => {
+        const k = "comp" + i, on = hov === k, h = this.hov(k);
+        return { label: c.label, title: c.title, body: c.body, enter: h.enter, leave: h.leave,
+          cardStyle: neu + lift(on), detailStyle: detail(on) };
+      }),
+      servicios: servicios.map((s, i) => {
+        const k = "serv" + i, on = hov === k, h = this.hov(k);
+        return { title: s.title, body: s.body, items: s.items, shot: shot(s.img), enter: h.enter, leave: h.leave,
+          cardStyle: neu + lift(on), detailStyle: detail(on) };
+      }),
+      enterCartera: () => this.setState({ hover: "cartera" }), leaveCartera: () => this.setState({ hover: "" }),
+      enterAura: () => this.setState({ hover: "aura" }), leaveAura: () => this.setState({ hover: "" }),
+      enterFgu: () => this.setState({ hover: "fgu" }), leaveFgu: () => this.setState({ hover: "" }),
+      fguCardStyle: neu + " display: flex; flex-direction: column;" + lift(hov === "fgu"),
+      fguDetailStyle: detail(hov === "fgu"),
+      carteraCardStyle: neu + " display: flex; flex-direction: column;" + lift(hov === "cartera"),
+      auraCardStyle: neu + " display: flex; flex-direction: column;" + lift(hov === "aura"),
+      carteraDetailStyle: detail(hov === "cartera"),
+      auraDetailStyle: detail(hov === "aura"),
+      viewStyle: "max-width: 1180px; margin: 0 auto; padding: clamp(26px, 4.4vh, 56px) 24px clamp(34px, 5vh, 64px); animation: u-in 560ms " + ease + " both;",
+      eyebrowStyle: "display: flex; align-items: center; gap: 12px; margin: 0 0 18px; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5C6F80;",
+      h2Style: "font-family: 'Sora', sans-serif; font-size: clamp(1.8rem, 3.2vw, 2.7rem); line-height: 1.08; letter-spacing: -0.03em; font-weight: 600; margin: 0; max-width: 24ch; text-wrap: balance;",
+      leadStyle: "margin: 18px 0 0; max-width: 66ch; font-size: clamp(1rem, 1.1vw, 1.12rem); line-height: 1.65; color: #4A5C6B;",
+      labelStyle: labelStyle,
+      cardTextStyle: "margin: 12px 0 0; font-size: 0.97rem; line-height: 1.65; color: #4A5C6B;",
+      principleStyle: "margin: 0; padding-left: 16px; border-left: 2px solid #2864E5; font-family: 'Sora', sans-serif; font-size: 1rem; font-weight: 500; line-height: 1.4;",
+      glassCardStyle: glass,
+      servHeroStyle: "display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: clamp(18px, 3vw, 44px); align-items: center; margin-top: clamp(22px, 3vh, 38px); background: linear-gradient(160deg, rgba(40,100,229,0.07) 0%, rgba(39,199,217,0.07) 100%); border-radius: 24px; padding: clamp(20px, 2.6vw, 34px); box-shadow: 10px 10px 30px rgba(40,100,229,0.1), -8px -8px 22px rgba(255,255,255,0.95), inset 0 0 0 1px rgba(40,100,229,0.12);",
+      solLinkStyle: "display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; min-height: 44px; font-size: 14px; font-weight: 600; color: #2864E5; transition: gap 240ms " + ease + ";",
+      contactTileStyle: neu + " display: flex; flex-direction: column; gap: 4px; transition: transform 300ms " + ease + ";",
+      formStyle: "display: grid; gap: 13px; background: rgba(255,255,255,0.66); backdrop-filter: blur(20px) saturate(1.3); border-radius: 24px; padding: clamp(20px, 2.8vw, 32px); box-shadow: 0 18px 44px rgba(7,20,33,0.09), inset 0 0 0 1px rgba(255,255,255,0.82);",
+      fieldLabelStyle: "display: grid; gap: 8px; font-size: 13px; font-weight: 600; color: #4A5C6B;",
+      inputStyle: "width: 100%; box-sizing: border-box; padding: 14px 16px; border: 0; border-radius: 14px; background: #FFFFFF; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; color: #071421; min-height: 48px; outline: none; box-shadow: inset 3px 3px 8px rgba(7,20,33,0.06), inset -3px -3px 8px rgba(255,255,255,0.95);",
+      textareaStyle: "width: 100%; box-sizing: border-box; padding: 14px 16px; border: 0; border-radius: 14px; background: #FFFFFF; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; line-height: 1.55; color: #071421; resize: vertical; outline: none; box-shadow: inset 3px 3px 8px rgba(7,20,33,0.06), inset -3px -3px 8px rgba(255,255,255,0.95);",
+      ctaStyle: "display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 15px 28px; border-radius: 16px; border: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15.5px; font-weight: 600; color: #FFFFFF; cursor: pointer; background: " + bg + "; box-shadow: 10px 12px 26px rgba(40,100,229,0.26), -6px -6px 16px rgba(255,255,255,0.9); transition: transform 300ms " + ease + ", filter 300ms " + ease + ";",
+      ctaSmallStyle: "display: inline-flex; align-items: center; white-space: nowrap; min-height: 44px; padding: 11px 17px; border-radius: 999px; border: 0; font-size: 14px; font-weight: 600; color: #FFFFFF; cursor: pointer; background: " + bg + "; box-shadow: 6px 8px 18px rgba(40,100,229,0.26), -4px -4px 12px rgba(255,255,255,0.9); transition: transform 300ms " + ease + ", filter 300ms " + ease + ";",
+      glassBtnStyle: "display: inline-flex; align-items: center; min-height: 52px; padding: 15px 28px; border-radius: 16px; border: 0; background: rgba(255,255,255,0.72); backdrop-filter: blur(18px) saturate(1.4); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15.5px; font-weight: 600; color: #071421; cursor: pointer; box-shadow: 0 12px 30px rgba(7,20,33,0.1), inset 0 0 0 1px rgba(255,255,255,0.85); transition: transform 300ms " + ease + ", background 300ms " + ease + ";"
+    };
+  }
+}
+</script>
+</body>
+</html>
